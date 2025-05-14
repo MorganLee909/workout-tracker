@@ -2,11 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Workout Tracker</title>
     <link rel="stylesheet" href="/index.css">
 </head>
 <body>
-    <h1>Workout Tracker</h1>
+    <div id="registerPage" class="page">
+        <form class="standardForm">
+            <h1>Create Account</h1>
+
+            <label>Name
+                <input
+                    id="registerName"
+                    type="text"
+                    placeholder="Name"
+                    required
+                >
+            </label>
+
+            <label>Email
+                <input
+                    id="registerEmail"
+                    type="email"
+                    placeholder="Email"
+                    required
+                >
+            </label>
+
+            <label>Password
+                <input
+                    id="registerPass"
+                    type="password"
+                    placeholder="Password"
+                    required
+                >
+            </label>
+
+            <label>Confirm Password
+                <input
+                    id="registerConfirmPass"
+                    type="password"
+                    placeholder="Confirm Password"
+                    required
+                >
+            </label>
+
+            <button>Create</button>
+        </form>
+    </div>
+
     <script src="/index.js"></script>
 </body>
 </html>

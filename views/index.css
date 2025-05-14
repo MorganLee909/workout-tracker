@@ -1,9 +1,57 @@
+@import "./css/register.css";
+:root{
+    --primary: #d7263d;
+    --accent: #f46036;
+    --dark: #1a1a1a;
+    --gray: #2e2e2e;
+    --text: #f2f2f2;
+    --success: #4caf50;
+    --warning: #ffc107;
+}
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: var(--text);
 }
 
-body{
-    background: orange;
+.page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background: var(--dark);
+}
+
+.standardForm{
+    background: var(--gray);
+    padding: 35px;
+    width: 100%;
+    max-width: 750px;
+}
+
+.standardForm h1{
+    font-size: 35px;
+    text-align: center;
+}
+
+.standardForm label{
+    display: flex;
+    flex-direction: column;
+    font-size: 22px;
+    margin: 10px 0;
+}
+
+.standardForm input{
+    font-size: 22px;
+    color: var(--gray);
+}
+
+.standardForm button{
+    font-size: 26px;
+    background: var(--accent);
+    margin-top: 35px;
+    padding: 10px 0;
 }
