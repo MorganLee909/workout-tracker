@@ -6,15 +6,18 @@ import cookieParser from "cookie-parser";
 
 import {catchError} from "./HttpError.js";
 
-const allowedOrigin = process.env.NODE_ENV === "production" ? "https://workout.leemorgan.dev" : "http://localhost:8000";
+import otherRoutes from "./routes/other.js";
+
 let mongoString = "mongodb://127.0.0.1/workout";
 if(process.env.COOKIE_SECRET){
     mongoString = `mongodb://workout:${process.env.MONGODB_PASS}@127.0.0.1:27017/workout?authSource=admin`;
 }
 
 mongoose.connect(mongoString);
+global.cwd = import.meta.dirname;
 
 const app = express();
+
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(compression());
 app.use(cors({
@@ -22,6 +25,9 @@ app.use(cors({
     credentials: true
 }));
 app.use(express.json());
+
+otherRoutes(app);
+
 app.use(catchError);
 
 if(process.env.NODE_ENV !== "production"){
