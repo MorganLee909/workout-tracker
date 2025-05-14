@@ -61,6 +61,35 @@ window.data = [
                 type: "String",
                 desc: "Confirmation password"
             }
-        ]
+        ],
+        responseBody: [{
+            name: "success",
+            type: "true",
+            desc: "Always '{success: true} if no error'"
+        }]
+    },
+    {
+        type: "route",
+        id: "loginUser",
+        title: "Log In",
+        url: "PUT /user/login",
+        description: "Log the user in",
+        requestBody: [
+            {
+                name: "email",
+                type: "String",
+                desc: "User email address"
+            },
+            {
+                name: "pass",
+                type: "String",
+                desc: "User password"
+            }
+        ],
+        responseBody: [{
+            name: "N/A",
+            type: "User",
+            desc: "User object"
+        }]
     }
 ]

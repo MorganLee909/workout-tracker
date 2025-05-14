@@ -10,7 +10,7 @@ const createRoute = async (req, res, next)=>{
         validate(req.body);
         const user = await createUser(req.body);
         await user.save();
-        res.json(responseUser(user));
+        res.json({success: true});
     }catch(e){next(e)}
 }
 
