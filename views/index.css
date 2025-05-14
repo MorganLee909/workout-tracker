@@ -1,4 +1,6 @@
 @import "./css/register.css";
+@import "./css/login.css";
+
 :root{
     --primary: #d7263d;
     --accent: #f46036;

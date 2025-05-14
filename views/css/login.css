@@ -1,0 +1,7 @@
+#loginPage{
+    flex-direction: column;
+}
+
+#loginPage .link{
+    margin-top: 35px;
+}
