@@ -1,5 +1,6 @@
 import registerPage from "./js/pages/register.js";
 import loginPage from "./js/pages/login.js";
+import homPage from "./js/pages/home.js";
 
 const notifier = document.getElementById("notifier");
 const pageElements = document.querySelectorAll(".page");
@@ -17,7 +18,7 @@ window.notify = (type, message)=>{
     }, 7500);
 }
 
-window.changePage = (page)=>{
+window.changePage = (page, data)=>{
     for(let i = 0; i < pageElements.length; i++){
         pageElements[i].style.display = "none";
     }
@@ -26,5 +27,6 @@ window.changePage = (page)=>{
     switch(page){
         case "login": loginPage.render(); break;
         case "register": registerPage.render(); break;
+        case "home": homePage.render(); break;
     }
 }
