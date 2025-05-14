@@ -11,7 +11,7 @@ import otherRoutes from "./routes/other.js";
 import userRoutes from "./routes/user.js";
 
 let mongoString = "mongodb://127.0.0.1/workout";
-if(process.env.COOKIE_SECRET){
+if(process.env.NODE_ENV === "production"){
     mongoString = `mongodb://workout:${process.env.MONGODB_PASS}@127.0.0.1:27017/workout?authSource=admin`;
 }
 
