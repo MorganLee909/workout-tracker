@@ -1,6 +1,6 @@
 import registerPage from "./js/pages/register.js";
 import loginPage from "./js/pages/login.js";
-import homPage from "./js/pages/home.js";
+import homePage from "./js/pages/home.js";
 
 const notifier = document.getElementById("notifier");
 const pageElements = document.querySelectorAll(".page");

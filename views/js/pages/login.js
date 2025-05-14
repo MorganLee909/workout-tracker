@@ -37,6 +37,7 @@ export default {
                     }
                 })
                 .catch((err)=>{
+                    console.log(err);
                     notify("error", "Something went wrong, try refreshing the page");
                 });
         });

@@ -26,6 +26,13 @@ const loginRoute = async (req, res, next)=>{
     }catch(e){next(e)}
 }
 
+const logoutRoute = async (req, res, next)=>{
+    try{
+        res.clearCookie("userToken");
+        res.json({success: true});
+    }catch(e){next(e)}
+}
+
 /*
  Create a new User object
  @param {Object} - Request body with user data
@@ -114,5 +121,6 @@ const createUuid = ()=>{
 
 export {
     createRoute,
-    loginRoute
+    loginRoute,
+    logoutRoute
 }

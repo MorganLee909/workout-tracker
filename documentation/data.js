@@ -73,6 +73,7 @@ window.data = [
         id: "loginUser",
         title: "Log In",
         url: "PUT /user/login",
+        auth: false,
         description: "Log the user in",
         requestBody: [
             {
@@ -90,6 +91,19 @@ window.data = [
             name: "N/A",
             type: "User",
             desc: "User object"
+        }]
+    },
+    {
+        type: "route",
+        id: "logoutUser",
+        title: "Log Out",
+        url: "GET /user/logout",
+        auth: false,
+        description: "Log the user out of this device",
+        responseBody: [{
+            name: "success",
+            type: "true",
+            desc: "Always {success: true} if no error"
         }]
     }
 ]
