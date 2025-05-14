@@ -25,11 +25,33 @@
     background: var(--dark);
 }
 
+#notifier{
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    font-size: 22px;
+    padding: 25px;
+    width: calc(100% - 30px);
+    text-align: center;
+    z-index: 100;
+}
+
+#notifier.error{
+    background: var(--warning);
+    color: var(--gray);
+}
+
+#notifier.success{
+    background: var(--success);
+}
+
 .standardForm{
+    display: flex;
+    flex-direction: column;
     background: var(--gray);
     padding: 35px;
     width: 100%;
-    max-width: 750px;
+    max-width: 550px;
 }
 
 .standardForm h1{

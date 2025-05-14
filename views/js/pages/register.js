@@ -13,6 +13,9 @@ export default {
             event.preventDefault();
             fetch("/user", {
                 method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
                 body: JSON.stringify({
                     name: document.getElementById("registerName").value,
                     email: document.getElementById("registerEmail").value,
