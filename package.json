@@ -1,0 +1,26 @@
+{
+  "name": "workout-tracker",
+  "version": "1.0.0",
+  "description": "Personal workout tracker",
+  "homepage": "https://github.com/MorganLee909/workout-tracker#readme",
+  "bugs": {
+    "url": "https://github.com/MorganLee909/workout-tracker/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MorganLee909/workout-tracker.git"
+  },
+  "license": "ISC",
+  "author": "Lee Morgan",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "compression": "^1.8.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.14.3"
+  }
+}
