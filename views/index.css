@@ -25,6 +25,12 @@
     background: var(--dark);
 }
 
+.logo{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
 #notifier{
     position: fixed;
     bottom: 15px;
