@@ -1,11 +1,13 @@
 import User from "../models/User.js";
 
 import {HttpError} from "../HttpError.js";
+import validate from "../validation/user.js";
 import bcrypt from "bcrypt";
 import crypto from "crypto";
 
 const createRoute = async (req, res, next)=>{
     try{
+        validate(req.body);
         const user = await createUser(req.body);
         await user.save();
         res.json(responseUser(user));
@@ -18,9 +20,13 @@ const createRoute = async (req, res, next)=>{
  @return {User} - User object
  */
 const createUser = async (data)=>{
+    const email = data.email.toLowerCase();
+    const user = await User.findOne({email: email});
+    if(user !== null) throw new HttpError(400, "User with this email already exists");
+
     return new User({
         name: data.name,
-        email: data.email.toLowerCase(),
+        email: email,
         password: await hashPass(data.pass),
         workouts: [],
         uuid: createUuid()
