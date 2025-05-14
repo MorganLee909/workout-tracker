@@ -3,9 +3,16 @@ export default {
 
     render: function(){
         if(!this.rendered){
+            this.buttons();
             this.createSubmit();
             this.rendered = true;
         }
+    },
+
+    buttons: function(){
+        document.getElementById("registerToLogin").addEventListener("click", ()=>{
+            changePage("login");
+        });
     },
 
     createSubmit: function(){

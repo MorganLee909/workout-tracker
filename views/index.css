@@ -82,4 +82,13 @@
     background: var(--accent);
     margin-top: 35px;
     padding: 10px 0;
+    cursor: pointer;
+}
+
+.link{
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    text-decoration: underline;
 }

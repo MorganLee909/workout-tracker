@@ -1,0 +1,7 @@
+#registerPage{
+    flex-direction: column;
+}
+
+#registerPage .link{
+    margin-top: 35px;
+}

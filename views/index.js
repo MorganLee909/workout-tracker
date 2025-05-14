@@ -1,8 +1,10 @@
 import registerPage from "./js/pages/register.js";
+import loginPage from "./js/pages/login.js";
 
 const notifier = document.getElementById("notifier");
+const pageElements = document.querySelectorAll(".page");
 
-registerPage.render();
+loginPage.render();
 
 window.notify = (type, message)=>{
     notifier.className = "";
@@ -16,5 +18,13 @@ window.notify = (type, message)=>{
 }
 
 window.changePage = (page)=>{
-    console.log("changing page");
+    for(let i = 0; i < pageElements.length; i++){
+        pageElements[i].style.display = "none";
+    }
+    document.getElementById(`${page}Page`).style.display = "flex";
+
+    switch(page){
+        case "login": loginPage.render(); break;
+        case "register": registerPage.render(); break;
+    }
 }
