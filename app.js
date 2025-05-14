@@ -3,6 +3,7 @@ import compression from "compression";
 import mongoose from "mongoose";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import esbuild from "esbuild";
 
 import {catchError} from "./HttpError.js";
 
@@ -15,6 +16,12 @@ if(process.env.COOKIE_SECRET){
 
 mongoose.connect(mongoString);
 global.cwd = import.meta.dirname;
+
+esbuild.build({
+    entryPoints: [`${global.cwd}/views/index.js`, `${global.cwd}/views/index.css`],
+    bundle: true,
+    outdir: `${global.cwd}/views/build/`
+});
 
 const app = express();
 
