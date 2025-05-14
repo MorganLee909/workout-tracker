@@ -43,6 +43,7 @@ const hashPass = async (password)=>{
  */
 const responseUser = (user)=>{
     return {
+        id: user._id,
         name: user.name,
         email: user.email,
         workouts: user.workouts
