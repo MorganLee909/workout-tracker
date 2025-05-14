@@ -4,6 +4,8 @@ import mongoose from "mongoose";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
+import {catchError} from "./HttpError.js";
+
 const allowedOrigin = process.env.NODE_ENV === "production" ? "https://workout.leemorgan.dev" : "http://localhost:8000";
 let mongoString = "mongodb://127.0.0.1/workout";
 if(process.env.COOKIE_SECRET){
@@ -20,6 +22,7 @@ app.use(cors({
     credentials: true
 }));
 app.use(express.json());
+app.use(catchError);
 
 if(process.env.NODE_ENV !== "production"){
     app.listen(8000);
