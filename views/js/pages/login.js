@@ -2,6 +2,10 @@ export default {
     rendered: false,
 
     render: function(){
+        document.getElementById("loginEmail").focus();
+
+        this.checkUser();
+
         if(!this.rendered){
             this.buttons();
             this.createSubmit();
@@ -41,5 +45,21 @@ export default {
                     notify("error", "Something went wrong, try refreshing the page");
                 });
         });
+    },
+
+    checkUser: function(){
+        fetch("/user", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(r=>r.json())
+            .then((response)=>{
+                if(!response.error){
+                    changePage("home", response);
+                }
+            })
+            .catch((err)=>{});
     }
 }

@@ -85,7 +85,7 @@ const comparePass = async (password, hashedPass)=>{
 const createToken = (user)=>{
     return jwt.sign({
         id: user._id,
-        token: user.token
+        token: user.uuid
     }, process.env.JWT_SECRET);
 }
 
