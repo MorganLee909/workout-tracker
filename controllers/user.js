@@ -33,6 +33,12 @@ const logoutRoute = async (req, res, next)=>{
     }catch(e){next(e)}
 }
 
+const getRoute = async (req, res, next)=>{
+    try{
+        res.json(res.locals.user);
+    }catch(e){next(e)}
+}
+
 /*
  Create a new User object
  @param {Object} - Request body with user data
@@ -122,5 +128,6 @@ const createUuid = ()=>{
 export {
     createRoute,
     loginRoute,
-    logoutRoute
+    logoutRoute,
+    getRoute
 }
