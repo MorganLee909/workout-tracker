@@ -8,6 +8,7 @@ import esbuild from "esbuild";
 import {catchError} from "./HttpError.js";
 
 import otherRoutes from "./routes/other.js";
+import userRoutes from "./routes/user.js";
 
 let mongoString = "mongodb://127.0.0.1/workout";
 if(process.env.COOKIE_SECRET){
@@ -34,6 +35,7 @@ app.use(cors({
 app.use(express.json());
 
 otherRoutes(app);
+userRoutes(app);
 
 app.use(catchError);
 
