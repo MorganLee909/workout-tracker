@@ -130,5 +130,36 @@ window.data = [
                 options: ["weights"]
             }
         ]
+    },
+    {
+        type: "route",
+        id: "createWorkout",
+        title: "Create",
+        url: "POST /workout",
+        auth: true,
+        description: "Create a new workout for a user",
+        requestBody: [
+            {
+                name: "exercises",
+                type: "[Object]",
+                desc: "List of all exercises for the workout. Contains a name and an enum 'type'"
+            },
+            {
+                name: "exercises.name",
+                type: "String",
+                desc: "Name of the exercise"
+            },
+            {
+                name: "exercises.type",
+                type: "String",
+                desc: "Enum describing what type of exercise it is",
+                options: ["weights"]
+            }
+        ],
+        responseBody: [{
+            name: "N/A",
+            type: "Workout",
+            desc: "Workout object"
+        }]
     }
 ]
