@@ -28,7 +28,7 @@ window.changePage = (page, data)=>{
     switch(page){
         case "login": loginPage.render(); break;
         case "register": registerPage.render(); break;
-        case "home": homePage.render(); break;
+        case "home": homePage.render(data); break;
         case "newWorkout": newWorkoutPage.render();
     }
 }

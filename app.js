@@ -22,6 +22,8 @@ global.cwd = import.meta.dirname;
 esbuild.build({
     entryPoints: [`${global.cwd}/views/index.js`, `${global.cwd}/views/index.css`],
     bundle: true,
+    minify: true,
+    sourcemap: process.env.NODE_ENV === "production",
     outdir: `${global.cwd}/views/build/`
 });
 

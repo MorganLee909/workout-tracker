@@ -1,12 +1,15 @@
 export default {
     rendered: false,
+    workoutList: document.getElementById("workoutList"),
 
-    render: function(){
+    render: function(newWorkout){
         if(!this.rendered){
             this.getWorkouts();
             this.buttons();
             this.rendered = true;
         }
+
+        if(newWorkout) this.addWorkout(newWorkout);
     },
 
     buttons: function(){
@@ -51,19 +54,22 @@ export default {
     },
 
     renderWorkouts: function(workouts){
-        const workoutList = document.getElementById("workoutList");
-        while(workoutList.children.length > 0){
-            workoutList.removeChild(workoutList.firstChild);
+        while(this.workoutList.children.length > 0){
+            this.workoutList.removeChild(this.workoutList.firstChild);
         }
 
         for(let i = 0; i < workouts.length; i++){
-            const button = document.createElement("button");
-            button.classList.add("button");
-            button.textContent = workouts[i].name;
-            button.addEventListener("click", ()=>{
-                changePage("workout", workouts[i]);
-            });
-            workoutList.appendChild(button);
+            this.addWorkout(workouts[i]);
         }
+    },
+
+    addWorkout: function(workout){
+        const button = document.createElement("button");
+        button.classList.add("button");
+        button.textContent = workout.name;
+        button.addEventListener("click", ()=>{
+            changePage("workout", workout);
+        });
+        this.workoutList.appendChild(button);
     }
 }
