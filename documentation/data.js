@@ -204,7 +204,7 @@ window.data = [
             },
             {
                 name: "notes",
-                type: "String (optional)",
+                type: "String",
                 desc: "Notes from the user about the session"
             },
             {
@@ -213,5 +213,45 @@ window.data = [
                 desc: "List of flexible objects. Structure of each object based on the type of exercise"
             }
         ]
+    },
+    {
+        type: "route",
+        id: "createSession",
+        title: "Create",
+        url: "POST /session",
+        auth: true,
+        description: "Create a new workout session",
+        requestBody: [
+            {
+                name: "workout",
+                type: "String",
+                desc: "ID of the workout this is part of"
+            },
+            {
+                name: "start",
+                type: "Date",
+                desc: "Date/Time of session start"
+            },
+            {
+                name: "end",
+                type: "Date",
+                desc: "Date/Time of session end"
+            },
+            {
+                name: "notes",
+                type: "String, (optional)",
+                desc: "Any notes from user about the session"
+            },
+            {
+                name: "exercises",
+                type: "[Object]",
+                desc: "List of flexible objects. Structure of each object based on the type of exercise"
+            }
+        ],
+        responeBody: [{
+            name: "N/A",
+            type: "Session",
+            desc: "Session object"
+        }]
     }
 ]
