@@ -6,7 +6,6 @@ import jwt from "jsonwebtoken";
 const userAuth = async (req, res, next)=>{
     try{
         const userData = jwt.verify(req.signedCookies.userToken, process.env.JWT_SECRET);
-        console.log(userData);
         
         const user = await User.findOne({_id: userData.id});
         if(!user || user.uuid !== userData.token){

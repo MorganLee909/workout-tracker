@@ -53,7 +53,6 @@ const createUser = async (data)=>{
         name: data.name,
         email: email,
         password: await hashPass(data.pass),
-        workouts: [],
         uuid: createUuid()
     });
 }

@@ -13,20 +13,10 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    workouts: [{
-        name: {
-            type: String,
-            required: true
-        },
-        exercises: {
-            type: [String],
-            required: false
-        }
-    }],
     uuid: {
         type: String,
         required: true
     }
 });
 
-export default mongoose.model("user", UserSchema);
+export default mongoose.model("User", UserSchema);
