@@ -1,9 +1,35 @@
-#home{
+#homePage{
+    flex-direction: column;
     position: relative;
+    overflow-y: auto;
+}
+
+#homePage h1{
+    text-decoration: underline;
 }
 
 #homeNewWorkout{
     position: absolute;
     top: 15px;
     right: 15px;
+}
+
+#workoutList{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#workoutList button{
+    margin: 15px 0;
+    padding: 15px 0;
+    width: 100%;
+}
+
+#homeLogout{
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    width: 100%;
+    text-align: center;
 }
