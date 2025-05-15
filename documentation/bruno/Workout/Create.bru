@@ -1,0 +1,26 @@
+meta {
+  name: Create
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8000/workout
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "exercises": [
+      {
+        "name": "First",
+        "type": "weights"
+      },
+      {
+        "name": "Second exercise",
+        "type": "weights"
+      }
+    ]
+  }
+}

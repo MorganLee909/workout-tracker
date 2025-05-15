@@ -6,6 +6,15 @@ meta {
 
 post {
   url: http://localhost:8000/user
-  body: none
+  body: json
   auth: none
+}
+
+body:json {
+  {
+    "name": "Lee Morgan",
+    "email": "lee@leemorgan.dev",
+    "pass": "leerobertmorgan",
+    "confirmPass": "leerobertmorgan"
+  }
 }

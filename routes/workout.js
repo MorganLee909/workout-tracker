@@ -5,5 +5,5 @@ import {
 import {userAuth} from "../auth.js";
 
 export default (app)=>{
-    app.get("/workout", userAuth, createRoute);
+    app.post("/workout", userAuth, createRoute);
 }

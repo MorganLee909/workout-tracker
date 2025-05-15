@@ -1,7 +1,35 @@
+import Workout from "../models/Workout.js";
+
 const createRoute = async (req, res, next)=>{
     try{
-        return null;
+        const workout = createWorkout(req.body, res.locals.user._id);
+        await workout.save();
+        res.json(responseWorkout(workout));
     }catch(e){next(e)}
+}
+
+/*
+ Create a new Workout object
+ @param {Object} - Body data from the request
+ @param {ObjectId} userId - ID of the user creating the workout
+ @return {Workout} - Workout object
+ */
+const createWorkout = (data, userId)=>{
+    return new Workout({
+        user: userId,
+        exercises: data.exercises
+    });
+}
+
+/*
+ Create a new workout object for sending to the frontend
+ @param {Workout} workout - Workout object
+ @return {Object} - Modified Workout object
+ */
+const responseWorkout = (workout)=>{
+    return {
+        exercises: workout.exercises
+    };
 }
 
 export {
