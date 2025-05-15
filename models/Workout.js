@@ -5,7 +5,17 @@ const WorkoutSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true
     },
-    exercises: [String]
+    exercises: [{
+        name: {
+            type: String,
+            required: true
+        },
+        //enum: weights
+        type: {
+            type: String,
+            required: true
+        }
+    }]
 });
 
 export default mongoose.model("Workout", WorkoutSchema);

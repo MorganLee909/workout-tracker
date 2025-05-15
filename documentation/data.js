@@ -17,19 +17,9 @@ window.data = [
                 desc: "User name"
             },
             {
-                name: "workouts",
-                type: [Object],
-                desc: "List of workouts. Includes name of the workout and list of exercises"
-            },
-            {
-                name: "workouts.name",
+                name: "email",
                 type: "String",
-                desc: "Name of the workout"
-            },
-            {
-                name: "workouts.exercises",
-                type: "[String]",
-                desc: "List of strings, each one being the name of an exercise"
+                desc: "User email address"
             }
         ]
     },
@@ -105,5 +95,40 @@ window.data = [
             type: "true",
             desc: "Always {success: true} if no error"
         }]
+    },
+    {
+        type: "object",
+        title: "Workout",
+        id: "workout",
+        auth: false,
+        description: "A workout plan that the user creates",
+        properties: [
+            {
+                name: "id",
+                type: "String",
+                desc: "Unique ID of the workout"
+            },
+            {
+                name: "exercises",
+                type: "[Object]",
+                desc: "A list of all exercises for this workout. Contains a name and an enum 'type'"
+            },
+            {
+                name: "exercises.id",
+                type: "String",
+                desc: "Unique ID of the exercise"
+            },
+            {
+                name: "exercises.name",
+                type: "String",
+                desc: "User given name of the exercise"
+            },
+            {
+                name: "exercises.type",
+                type: "String",
+                desc: "Enum describing what type of exercise it is",
+                options: ["weights"]
+            }
+        ]
     }
 ]
