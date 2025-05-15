@@ -166,5 +166,18 @@ window.data = [
             type: "Workout",
             desc: "Workout object"
         }]
+    },
+    {
+        type: "route",
+        id: "getWorkouts",
+        title: "Get",
+        url: "GET /workout",
+        auth: true,
+        description: "Retrieve all of the workouts for logged in user",
+        responseBody: [{
+            name: "N/A",
+            type: "[Workout]",
+            desc: "List of workouts for the logged in user"
+        }]
     }
 ]
