@@ -140,6 +140,11 @@ window.data = [
         description: "Create a new workout for a user",
         requestBody: [
             {
+                name: "name",
+                type: "String",
+                desc: "Name of the workout"
+            },
+            {
                 name: "exercises",
                 type: "[Object]",
                 desc: "List of all exercises for the workout. Contains a name and an enum 'type'"

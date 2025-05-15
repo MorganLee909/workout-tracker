@@ -1,9 +1,39 @@
 #newWorkoutPage{
+    flex-direction: column;
+    justify-content: flex-start;
     position: relative;
+    padding-top: 95px;
+    overflow-y: auto;
 }
 
 #newWorkoutBack{
     position: absolute;
     top: 15px;
     right: 15px;
+}
+
+#newWorkoutPage label{
+    display: flex;
+    flex-direction: column;
+    font-size: 22px;
+}
+
+#newWorkoutPage input{
+    font-size: 22px;
+    color: var(--gray);
+    padding: 5px;
+}
+
+.newWorkoutInputs{
+    width: 100%;
+    max-width: 550px;
+}
+
+#newWorkoutName{
+    margin-bottom: 35px;
+}
+
+#newWorkoutFinish{
+    margin-top: 35px;
+    width: 100%;
 }

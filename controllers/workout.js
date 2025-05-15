@@ -17,6 +17,7 @@ const createRoute = async (req, res, next)=>{
 const createWorkout = (data, userId)=>{
     return new Workout({
         user: userId,
+        name: data.name,
         exercises: data.exercises
     });
 }
@@ -28,6 +29,7 @@ const createWorkout = (data, userId)=>{
  */
 const responseWorkout = (workout)=>{
     return {
+        name: workout.name,
         exercises: workout.exercises
     };
 }

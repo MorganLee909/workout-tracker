@@ -12,7 +12,7 @@
       <path d="M10,40 Q25,20 50,30 Q75,40 90,30 Q75,50 50,60 Q25,70 10,60 Q25,50 10,40" fill="#D7263D">
     </svg>
 
-    <p id="notifier" style="display:none">Some message here</p>
+    <p id="notifier" style="display:none"></p>
 
     <div id="registerPage" class="page" style="display:none">
         <form id="registerForm" class="standardForm">
@@ -96,13 +96,18 @@
 
     <div id="newWorkoutPage" class="page">
         <button id="newWorkoutBack" class="button">Cancel</button>
-        <label>Name of Workout:
-            <input
-                id="newWorkoutName"
-                type="name"
-                placeholder="Name"
-            >
-        </label>
+
+        <div id="newWorkoutInputs">
+            <label>Name of Workout:
+                <input
+                    id="newWorkoutName"
+                    type="text"
+                    placeholder="Name"
+                >
+            </label>
+        </div>
+
+        <button id="newWorkoutFinish" class="button">Create Workout</button>
     </div>
 
     <script src="/index.js"></script>

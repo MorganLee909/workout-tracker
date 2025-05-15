@@ -5,6 +5,10 @@ const WorkoutSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true,
     },
+    name: {
+        type: String,
+        required: true
+    },
     exercises: [{
         name: {
             type: String,
