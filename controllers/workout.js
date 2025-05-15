@@ -8,6 +8,13 @@ const createRoute = async (req, res, next)=>{
     }catch(e){next(e)}
 }
 
+const getRoute = async (req, res, next)=>{
+    try{
+        const workouts = await Workout.find({user: res.locals.user._id});
+        res.json(workouts);
+    }catch(e){next(e)}
+}
+
 /*
  Create a new Workout object
  @param {Object} - Body data from the request
@@ -35,5 +42,6 @@ const responseWorkout = (workout)=>{
 }
 
 export {
-    createRoute
+    createRoute,
+    getRoute
 }
