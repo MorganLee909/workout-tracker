@@ -2,6 +2,7 @@ import registerPage from "./js/pages/register.js";
 import loginPage from "./js/pages/login.js";
 import homePage from "./js/pages/home.js";
 import newWorkoutPage from "./js/pages/newWorkout.js";
+import sessionPage from "./js/pages/session.js";
 
 const notifier = document.getElementById("notifier");
 const pageElements = document.querySelectorAll(".page");
@@ -30,5 +31,6 @@ window.changePage = (page, data)=>{
         case "register": registerPage.render(); break;
         case "home": homePage.render(data); break;
         case "newWorkout": newWorkoutPage.render();
+        case "session": sessionPage.render(data); break;
     }
 }

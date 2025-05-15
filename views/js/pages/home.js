@@ -68,7 +68,7 @@ export default {
         button.classList.add("button");
         button.textContent = workout.name;
         button.addEventListener("click", ()=>{
-            changePage("workout", workout);
+            changePage("session", workout);
         });
         this.workoutList.appendChild(button);
     }

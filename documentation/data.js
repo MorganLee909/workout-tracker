@@ -253,5 +253,18 @@ window.data = [
             type: "Session",
             desc: "Session object"
         }]
+    },
+    {
+        type: "route",
+        id: "getSessions",
+        title: "Get",
+        url: "GET /session/:workoutId",
+        auth: true,
+        description: "Retrieve the previous 5 sessions recorded for a specific workout",
+        responseBody: [{
+            name: "N/A",
+            type: "[Session]",
+            desc: "List of Session objects"
+        }]
     }
 ]
