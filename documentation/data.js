@@ -179,5 +179,39 @@ window.data = [
             type: "[Workout]",
             desc: "List of workouts for the logged in user"
         }]
+    },
+    {
+        type: "object",
+        title: "Session",
+        id: "session",
+        auth: false,
+        description: "An instance of a workout",
+        properties: [
+            {
+                name: "id",
+                type: "String",
+                desc: "Unique ID of the session"
+            },
+            {
+                name: "start",
+                type: "Date",
+                desc: "Date/Time when session started"
+            },
+            {
+                name: "end",
+                type: "Date",
+                desc: "Date/Time when session finished"
+            },
+            {
+                name: "notes",
+                type: "String (optional)",
+                desc: "Notes from the user about the session"
+            },
+            {
+                name: "exercises",
+                type: "[Object]",
+                desc: "List of flexible objects. Structure of each object based on the type of exercise"
+            }
+        ]
     }
 ]

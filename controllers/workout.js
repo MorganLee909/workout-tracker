@@ -36,6 +36,7 @@ const createWorkout = (data, userId)=>{
  */
 const responseWorkout = (workout)=>{
     return {
+        id: workout._id,
         name: workout.name,
         exercises: workout.exercises
     };
