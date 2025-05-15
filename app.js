@@ -9,6 +9,7 @@ import {catchError} from "./HttpError.js";
 
 import otherRoutes from "./routes/other.js";
 import userRoutes from "./routes/user.js";
+import workoutRoutes from "./routes/workout.js";
 
 let mongoString = "mongodb://127.0.0.1/workout";
 if(process.env.NODE_ENV === "production"){
@@ -36,6 +37,7 @@ app.use(express.json());
 
 otherRoutes(app);
 userRoutes(app);
+workoutRoutes(app);
 
 app.use(catchError);
 
