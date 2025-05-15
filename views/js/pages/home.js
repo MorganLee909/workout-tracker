@@ -22,6 +22,10 @@ export default {
                 .catch((err)=>{
                     notify("error", "Something went wrong, try refreshing the page");
                 });
-        })
+        });
+
+        document.getElementById("homeNewWorkout").addEventListener("click", ()=>{
+            changePage("newWorkout");
+        });
     }
 }
