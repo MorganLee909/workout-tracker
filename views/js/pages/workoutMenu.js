@@ -22,11 +22,22 @@ export default {
     },
 
     addResumeButtons: function(container, workout){
+        const buttons = container.querySelectorAll("button");
+        for(let i = 0; i < buttons.length; i++){
+            buttons[i].parentElement.removeChild(buttons[i]);
+        }
+
         const finish = document.createElement("button");
         finish.classList.add("button");
         finish.textContent = "Save Previous and Start New";
         finish.addEventListener("click", ()=>{this.finish(workout)});
         container.appendChild(finish);
+
+        const discard = document.createElement("button");
+        discard.classList.add("button");
+        discard.textContent = "Discard Previous and Start New";
+        discard.addEventListener("click", ()=>{this.discard(workout)});
+        container.appendChild(discard);
     },
 
     finish: function(workout){
@@ -48,10 +59,17 @@ export default {
                     notify("success", "Workout saved");
                 }
                 localStorage.removeItem(workout.id);
+                document.getElementById("resumeWorkoutContainer").style.display = "none";
                 changePage("session", workout);
             })
             .catch((err)=>{
                 notify("error", "ERROR: unable to start workout");
             });
+    },
+
+    discard: function(workout){
+        localStorage.removeItem(workout.id);
+        document.getElementById("resumeWorkoutContainer").style.display = "none";
+        changePage("session", workout);
     }
 }
