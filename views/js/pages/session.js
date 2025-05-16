@@ -8,7 +8,14 @@ export default {
     render: async function(workout){
         this.workout = workout;
         this.pastSessions = await this.getPastSessions(workout.id);
-        this.currentSession = this.createNewSession(workout);
+
+        const previous = localStorage.getItem(workout.id);
+        if(previous){
+            this.currentSession = JSON.parse(previous);
+            this.exerciseIndex = this.currentSession.exerciseIndex;
+        }else{
+            this.currentSession = this.createNewSession(workout);
+        }
 
         this.buttons();
         this.changeExercise(0);
@@ -62,7 +69,8 @@ export default {
             workout: workout.id,
             start: new Date(),
             notes: "",
-            exercises: []
+            exercises: [],
+            exerciseIndex: this.exerciseIndex
         };
 
         localStorage.setItem(workout.id, JSON.stringify(session));
@@ -70,7 +78,10 @@ export default {
     },
 
     changeExercise: function(num){
-        if(num !== 0) localStorage.setItem(this.workout.id, JSON.stringify(this.currentSession));
+        if(num !== 0){
+            this.currentSession.exerciseIndex = this.exerciseIndex + 1;
+            localStorage.setItem(this.workout.id, JSON.stringify(this.currentSession));
+        }
         this.exerciseIndex += num;
         if(this.exerciseIndex === this.workout.exercises.length-1){
             document.getElementById("nextSessionBtn").style.display = "none";

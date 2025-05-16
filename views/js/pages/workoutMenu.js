@@ -38,6 +38,12 @@ export default {
         discard.textContent = "Discard Previous and Start New";
         discard.addEventListener("click", ()=>{this.discard(workout)});
         container.appendChild(discard);
+
+        const resume = document.createElement("button");
+        resume.classList.add("button");
+        resume.textContent = "Resume Previous Workout";
+        resume.addEventListener("click", ()=>{this.resume(workout)});
+        container.appendChild(resume);
     },
 
     finish: function(workout){
@@ -69,6 +75,11 @@ export default {
 
     discard: function(workout){
         localStorage.removeItem(workout.id);
+        document.getElementById("resumeWorkoutContainer").style.display = "none";
+        changePage("session", workout);
+    },
+
+    resume: function(workout){
         document.getElementById("resumeWorkoutContainer").style.display = "none";
         changePage("session", workout);
     }
