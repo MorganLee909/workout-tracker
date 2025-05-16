@@ -191,6 +191,31 @@ window.data = [
         }]
     },
     {
+        type: "route",
+        id: "updateWorkoutNote",
+        title: "Update Note",
+        url: "PUT /workout/:workoutId/note",
+        auth: true,
+        description: "Create a note for a specific exercise",
+        requestBody: [
+            {
+                name: "exercise",
+                type: "String",
+                desc: "ID of the exercise to update the note for"
+            },
+            {
+                name: "note",
+                type: "String",
+                desc: "User created note for exercise"
+            }
+        ],
+        responseBody: [{
+            name: "N/A",
+            type: "Workout",
+            desc: "Workout object"
+        }]
+    },
+    {
         type: "object",
         title: "Session",
         id: "session",
