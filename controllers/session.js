@@ -1,6 +1,10 @@
 import Session from "../models/Session.js";
 import Workout from "../models/Workout.js";
 
+import mongoose from "mongoose";
+
+const ObjectId = mongoose.Types.ObjectId;
+
 const createRoute = async (req, res, next)=>{
     try{
         const session = createSession(req.body);
@@ -11,10 +15,14 @@ const createRoute = async (req, res, next)=>{
 
 const getRoute = async (req, res, next)=>{
     try{
-        const [workout, sessions] = Promise.all(
+        const [workout, sessions] = await Promise.all([
             Workout.findOne({_id: req.params.workoutId}),
-            Session.find({workout: req.params.workoutId}).limit(5)
-        );
+            Session.aggregate([
+                {$match: {workout: new ObjectId(req.params.workoutId)}},
+                {$sort: {start: -1}},
+                {$limit: 5}
+            ])
+        ]);
         confirmWorkoutOwnership(workout, res.locals.user);
         res.json(sessions.map(s => responseSession(s)));
     }catch(e){next(e)}

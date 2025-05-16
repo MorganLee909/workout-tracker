@@ -1,0 +1,52 @@
+#sessionPage{
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 75px;
+    overflow-y: auto;
+}
+
+#previousSession{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+    width: 100%;
+    border: 1px solid var(--primary);
+    border-radius: 25px;
+    margin-bottom: 15px;
+}
+
+#noSessionText{
+    color: white;
+    font-size: 18px;
+}
+
+#sessionPage h1{
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 15px;
+}
+
+.weightSet{
+    padding: 10px 5px;
+    border: 1px solid var(--accent);
+    border-radius: 25px;
+    margin: 15px 0;
+}
+
+.weightSet h3{
+    margin-bottom: 15px;
+}
+
+.weightSet label{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.weightSet input{
+    font-size: 22px;
+    padding: 5px;
+    color: var(--gray);
+}

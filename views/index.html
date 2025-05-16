@@ -8,8 +8,15 @@
     <link rel="icon" href="/logo.svg" type="image/svg+xml">
 </head>
 <body>
-    <svg class="logo" width="90" height="60" viewBox="10 20 80 50">
-      <path d="M10,40 Q25,20 50,30 Q75,40 90,30 Q75,50 50,60 Q25,70 10,60 Q25,50 10,40" fill="#D7263D">
+    <svg class="logo" width="90" height="60" viewBox="10 20 80 50" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#e57600" />
+          <stop offset="10%" stop-color="#f46036" />
+          <stop offset="100%" stop-color="#d7263d" />
+        </linearGradient>
+      </defs>
+      <path d="M10,40 Q25,20 50,30 Q75,40 90,30 Q75,50 50,60 Q25,70 10,60 Q25,50 10,40" fill="url(#logoGradient)" />
     </svg>
 
     <p id="notifier" style="display:none"></p>
@@ -114,7 +121,27 @@
         <button id="newWorkoutFinish" class="button">Create Workout</button>
     </div>
 
-    <div id="sessionPage" class="page"></div>
+    <div id="sessionPage" class="page">
+        <div id="previousSession"></div>
+
+        <h1 id="sessionExerciseName"></h3>
+
+        <div id="sessionSets"></div>
+
+        <button id="nextSessionBtn" class="button">Next</button>
+
+        <template id="weightSet">
+            <div class="weightSet">
+                <h3></h3>
+                <label>Weight
+                    <input class="weightSetWeight" type="number" step="1">
+                </label>
+                <label>Reps
+                    <input class="weightSetReps" type="number" step="1">
+                </label>
+            </div>
+        </template>
+    </div>
 
     <script src="/index.js"></script>
 </body>

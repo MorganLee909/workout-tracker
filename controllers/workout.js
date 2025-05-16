@@ -11,7 +11,7 @@ const createRoute = async (req, res, next)=>{
 const getRoute = async (req, res, next)=>{
     try{
         const workouts = await Workout.find({user: res.locals.user._id});
-        res.json(workouts);
+        res.json(workouts.map(w => responseWorkout(w)));
     }catch(e){next(e)}
 }
 

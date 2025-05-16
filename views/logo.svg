@@ -1,3 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="90" height="60" viewBox="10 20 80 50">
-  <path d="M10,40 Q25,20 50,30 Q75,40 90,30 Q75,50 50,60 Q25,70 10,60 Q25,50 10,40" fill="#D7263D"/>
+<svg class="logo" width="90" height="60" viewBox="10 20 80 50" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#e57600" />
+      <stop offset="25%" stop-color="#f46036" />
+      <stop offset="100%" stop-color="#d7263d" />
+    </linearGradient>
+  </defs>
+  <path d="M10,40 Q25,20 50,30 Q75,40 90,30 Q75,50 50,60 Q25,70 10,60 Q25,50 10,40" fill="url(#logoGradient)" />
 </svg>

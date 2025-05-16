@@ -2,6 +2,7 @@
 @import "./css/login.css";
 @import "./css/home.css";
 @import "./css/newWorkout.css";
+@import "./css/session.css";
 
 :root{
     --primary: #d7263d;
@@ -103,12 +104,14 @@
 }
 
 .button{
-    background: none;
+    background: linear-gradient(var(--dark), var(--dark)) padding-box,
+                linear-gradient(to right, var(--accent), var(--primary), var(--accent)) border-box;
     border-radius: 15px;
-    border: 2px solid var(--accent);
+    border: 2px solid transparent;
     padding: 5px 25px;
     font-size: 22px;
     cursor: pointer;
+    position: relative;
 }
 
 .button:active{
