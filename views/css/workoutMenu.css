@@ -2,6 +2,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    position: relative;
 }
 
 #workoutMenuTitle{
@@ -17,4 +18,26 @@
     width: 100%;
     padding: 15px 0;
     margin: 15px 0;
+}
+
+#resumeWorkoutContainer{
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: var(--dark);
+    padding: 25px;
+}
+
+#resumeWorkoutContainer h2{
+    line-height: 35px;
+    text-align: center;
+}
+
+#resumeWorkoutContainer button{
+    font-size: 18px;
 }
