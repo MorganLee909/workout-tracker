@@ -1,0 +1,20 @@
+#workoutMenuPage{
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#workoutMenuTitle{
+    text-decoration: underline;
+}
+
+.workoutMenuButtons{
+    width: 100%;
+    margin-top: 35px;
+}
+
+#workoutMenuPage button{
+    width: 100%;
+    padding: 15px 0;
+    margin: 15px 0;
+}
