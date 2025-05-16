@@ -38,7 +38,6 @@ const createSession = (data)=>{
         workout: data.workout,
         start: new Date(data.start),
         end: new Date(data.end),
-        notes: data.notes,
         exercises: data.exercises
     });
 }
@@ -64,7 +63,6 @@ const responseSession = (session)=>{
         workout: session.workout,
         start: session.start,
         end: session.end,
-        notes: session.notes,
         exercises: session.exercises
     };
 }

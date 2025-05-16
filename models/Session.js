@@ -13,10 +13,6 @@ const SessionSchema = mongoose.Schema({
         type: Date,
         required: true
     },
-    notes: {
-        type: String,
-        required: false
-    },
     exercises: [{}]
 });
 

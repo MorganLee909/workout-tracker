@@ -45,8 +45,23 @@ export default {
             nextSessionBtn.addEventListener("click", ()=>{this.changeExercise(1)});
             document.getElementById("finishSessionBtn").addEventListener("click", ()=>{this.finish()});
             document.getElementById("sessionAddSet").addEventListener("click", ()=>{this.addSet()});
+            document.getElementById("sessionNotesBtn").addEventListener("click", this.displayNotes.bind(this));
+            document.getElementById("sessionNotesDone").addEventListener("click", (event)=>{
+                event.target.parentElement.style.display = "none";
+            });
             this.rendered = true;
         }
+    },
+
+    displayNotes: function(){
+        const container = document.getElementById("sessionNotesText");
+        container.style.display = "flex";
+
+        const textarea = container.querySelector("textarea");
+        textarea.textContent = this.currentSession.exercises[this.exerciseIndex].notes;
+        textarea.addEventListener("input", ()=>{
+            this.currentSession.exercises[this.exerciseIndex].notes = textarea.value;
+        });
     },
 
     addSet: function(){

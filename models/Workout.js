@@ -14,7 +14,10 @@ const WorkoutSchema = new mongoose.Schema({
             type: String,
             required: true
         },
-        //enum: weights
+        notes: {
+            type: String,
+            required: false
+        },
         type: {
             type: String,
             required: true

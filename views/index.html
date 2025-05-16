@@ -139,7 +139,15 @@
 
         <p id="previousSession"></p>
 
-        <button id="sessionAddSet" class="button">Add Set</button>
+        <div id="sessionButtonBox">
+            <button id="sessionNotesBtn" class="button">Notes</button>
+            <button id="sessionAddSet" class="button">Add Set</button>
+        </div>
+
+        <div id="sessionNotesText" style="display:none">
+            <textarea id="sessionTextArea"></textarea>
+            <button id="sessionNotesDone" class="button">Done</button>
+        </div>
 
         <div id="sessionSets"></div>
 

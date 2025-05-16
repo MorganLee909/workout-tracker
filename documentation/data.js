@@ -124,6 +124,11 @@ window.data = [
                 desc: "User given name of the exercise"
             },
             {
+                name: "exercises.notes",
+                type: "String",
+                desc: "User created notes for the exercise"
+            },
+            {
                 name: "exercises.type",
                 type: "String",
                 desc: "Enum describing what type of exercise it is",
@@ -153,6 +158,11 @@ window.data = [
                 name: "exercises.name",
                 type: "String",
                 desc: "Name of the exercise"
+            },
+            {
+                name: "exercises.notes",
+                type: "String (optional)",
+                desc: "User created notes for the exercise"
             },
             {
                 name: "exercises.type",
@@ -203,11 +213,6 @@ window.data = [
                 desc: "Date/Time when session finished"
             },
             {
-                name: "notes",
-                type: "String",
-                desc: "Notes from the user about the session"
-            },
-            {
                 name: "exercises",
                 type: "[Object]",
                 desc: "List of flexible objects. Structure of each object based on the type of exercise"
@@ -236,11 +241,6 @@ window.data = [
                 name: "end",
                 type: "Date",
                 desc: "Date/Time of session end"
-            },
-            {
-                name: "notes",
-                type: "String, (optional)",
-                desc: "Any notes from user about the session"
             },
             {
                 name: "exercises",

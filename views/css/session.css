@@ -4,10 +4,39 @@
     padding-bottom: 25px;
 }
 
-#sessionAddSet{
+#sessionButtonBox{
+    display: flex;
+    flex-direction: column;
     position: absolute;
     top: 15px;
     right: 15px;
+}
+
+#sessionNotesBtn{
+    margin-bottom: 5px;
+}
+
+#sessionNotesText{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 25%;
+    left: 2%;
+    height: 35%;
+    width: 95%;
+    padding: 25px 10px;
+    box-shadow: 0 0 5px var(--text);
+    background: var(--gray);
+    z-index: 2;
+}
+
+#sessionNotesText textarea{
+    height: 100%;
+    width: 100%;
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: var(--gray);
+    padding: 5px;
 }
 
 #noSessionText{
