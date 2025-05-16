@@ -1,7 +1,6 @@
 #sessionPage{
     flex-direction: column;
     justify-content: flex-start;
-    padding-top: 75px;
     overflow-y: auto;
 }
 
@@ -49,4 +48,10 @@
     font-size: 22px;
     padding: 5px;
     color: var(--gray);
+}
+
+#nextSessionBtn, #finishSessionBtn{
+    width: 100%;
+    padding: 15px 0;
+    margin-top: 25px;
 }

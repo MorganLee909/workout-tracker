@@ -28,7 +28,7 @@
     height: 100vh;
     width: 100vw;
     background: var(--dark);
-    padding: 25px;
+    padding: 75px 25px 25px 25px;
 }
 
 .logo{
@@ -112,8 +112,4 @@
     font-size: 22px;
     cursor: pointer;
     position: relative;
-}
-
-.button:active{
-    background: var(--gray);
 }
