@@ -44,6 +44,12 @@ export default {
         resume.textContent = "Resume Previous Workout";
         resume.addEventListener("click", ()=>{this.resume(workout)});
         container.appendChild(resume);
+
+        const cancel = document.createElement("button");
+        cancel.classList.add("button");
+        cancel.textContent = "Cancel";
+        cancel.addEventListener("click", this.cancel);
+        container.appendChild(cancel);
     },
 
     finish: function(workout){
@@ -82,5 +88,9 @@ export default {
     resume: function(workout){
         document.getElementById("resumeWorkoutContainer").style.display = "none";
         changePage("session", workout);
+    },
+
+    cancel: function(){
+        document.getElementById("resumeWorkoutContainer").style.display = "none";
     }
 }
