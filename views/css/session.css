@@ -25,6 +25,21 @@
     border: 1px solid var(--accent);
     border-radius: 25px;
     margin: 15px 0;
+    position: relative;
+}
+
+.weightSetDelete{
+    background: linear-gradient(to right, var(--accent), var(--primary));
+    border: none;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 22px;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+    color: var(--dark);
 }
 
 .weightSet h3{

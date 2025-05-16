@@ -113,15 +113,30 @@ export default {
         const setElem = template.cloneNode(true);
         setElem.querySelector("h3").textContent = `Set #${num}`;
 
+        const deleteBtn = setElem.querySelector(".weightSetDelete");
+        deleteBtn.addEventListener("click", (event)=>{
+            this.deleteSet(num, event.target.parentElement);
+        });
+
         const weightInput = setElem.querySelector(".weightSetWeight");
-        weightInput.value = set.weight;
+        if(set.weight > 0) weightInput.value = set.weight;
         weightInput.addEventListener("input", ()=>{set.weight = weightInput.value});
 
         const repInput = setElem.querySelector(".weightSetReps");
-        repInput.value = set.reps;
+        if(set.reps > 0) repInput.value = set.reps;
         repInput.addEventListener("input", ()=>{set.reps = repInput.value});
 
         return setElem;
+    },
+
+    deleteSet: function(num, setElem){
+        this.currentSession.exercises[this.exerciseIndex].sets.splice(num-1, 1);
+        const container = setElem.parentElement;
+        container.removeChild(setElem);
+
+        for(let i = 0; i < container.children.length; i++){
+            container.children[i].querySelector("h3").textContent = `Set #${i+1}`;
+        }
     },
 
     getPastSets: function(id){
