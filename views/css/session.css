@@ -1,7 +1,7 @@
 #sessionPage{
     flex-direction: column;
     justify-content: flex-start;
-    overflow-y: auto;
+    padding-bottom: 25px;
 }
 
 #previousSession{

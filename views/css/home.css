@@ -1,7 +1,6 @@
 #homePage{
     flex-direction: column;
     position: relative;
-    overflow-y: auto;
 }
 
 #homePage h1{
