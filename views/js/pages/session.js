@@ -37,7 +37,23 @@ export default {
         if(!this.rendered){
             nextSessionBtn.addEventListener("click", ()=>{this.changeExercise(1)});
             document.getElementById("finishSessionBtn").addEventListener("click", ()=>{this.finish()});
+            document.getElementById("sessionAddSet").addEventListener("click", ()=>{this.addSet()});
             this.rendered = true;
+        }
+    },
+
+    addSet: function(){
+        const exercise = this.currentSession.exercises[this.exerciseIndex];
+        const template = document.getElementById("weightSet").content.children[0];
+        const container = document.getElementById("sessionSets");
+
+        switch(exercise.type){
+            case "weights":
+                const newSet = {weight: 0, reps: 0};
+                const setNumber = container.children.length + 1;
+                exercise.sets.push(newSet);
+                container.appendChild(this.createWeightSetElement(template, newSet, setNumber));
+                break;
         }
     },
 
@@ -81,27 +97,31 @@ export default {
         }
 
         switch(exercise.type){
-            case "weights": this.displayWeightSets(exercise, setsContainer);
+            case "weights": this.displayWeightSets(exercise.sets, setsContainer);
         }
     },
 
-    displayWeightSets: function(exercise, container){
-        const weightTemplate = document.getElementById("weightSet").content.children[0];
+    displayWeightSets: function(sets, container){
+        const template = document.getElementById("weightSet").content.children[0];
 
-        for(let i = 0; i < exercise.sets.length; i++){
-            const set = weightTemplate.cloneNode(true);
-            set.querySelector("h3").textContent = `Set #${i+1}`;
-
-            const weightInput = set.querySelector(".weightSetWeight");
-            weightInput.value = exercise.sets[i].weight
-            weightInput.addEventListener("input", ()=>{exercise.sets[i].weight = weightInput.value});
-
-            const repInput = set.querySelector(".weightSetReps");
-            repInput.value = exercise.sets[i].reps;
-            repInput.addEventListener("input", ()=>{exercise.sets[i].reps = repInput.value});
-
-            container.appendChild(set);
+        for(let i = 0; i < sets.length; i++){
+            container.appendChild(this.createWeightSetElement(template, sets[i], i+1));
         }
+    },
+
+    createWeightSetElement: function(template, set, num){
+        const setElem = template.cloneNode(true);
+        setElem.querySelector("h3").textContent = `Set #${num}`;
+
+        const weightInput = setElem.querySelector(".weightSetWeight");
+        weightInput.value = set.weight;
+        weightInput.addEventListener("input", ()=>{set.weight = weightInput.value});
+
+        const repInput = setElem.querySelector(".weightSetReps");
+        repInput.value = set.reps;
+        repInput.addEventListener("input", ()=>{set.reps = repInput.value});
+
+        return setElem;
     },
 
     getPastSets: function(id){
