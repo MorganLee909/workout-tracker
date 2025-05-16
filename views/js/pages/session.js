@@ -1,4 +1,5 @@
-export default{
+export default {
+    rendered: false,
     workout: null,
     pastSessions: null,
     exerciseIndex: 0,
@@ -7,8 +8,9 @@ export default{
     render: async function(workout){
         this.workout = workout;
         this.pastSessions = await this.getPastSessions(workout.id);
+        this.currentSession = this.createNewSession(workout);
+
         this.buttons();
-        this.createNewSession(workout);
         this.changeExercise(0);
     },
 
@@ -29,19 +31,26 @@ export default{
     },
 
     buttons: function(){
-        document.getElementById("nextSessionBtn").addEventListener("click", ()=>{this.changeExercise(1)});
-        document.getElementById("finishSessionBtn").addEventListener("click", ()=>{this.finish()});
+        const nextSessionBtn = document.getElementById("nextSessionBtn");
+        nextSessionBtn.style.display = "block";
+
+        if(!this.rendered){
+            nextSessionBtn.addEventListener("click", ()=>{this.changeExercise(1)});
+            document.getElementById("finishSessionBtn").addEventListener("click", ()=>{this.finish()});
+            this.rendered = true;
+        }
     },
 
     createNewSession: function(workout){
-        this.currentSession = {
+        session = {
             workout: workout.id,
             start: new Date(),
             notes: "",
             exercises: []
         };
 
-        localStorage.setItem(workout.id, JSON.stringify(this.currentSession));
+        localStorage.setItem(workout.id, JSON.stringify(session));
+        return session;
     },
 
     changeExercise: function(num){
@@ -51,8 +60,8 @@ export default{
             document.getElementById("nextSessionBtn").style.display = "none";
         }
         let exercise = null;
-        if(this.currentSession[this.exerciseIndex]){
-            exercise = currentSession[this.exerciseIndex];
+        if(this.currentSession.exercises[this.exerciseIndex]){
+            exercise = this.currentSession.exercises[this.exerciseIndex];
         }else{
             const workoutExercise = this.workout.exercises[this.exerciseIndex];
             exercise = {
@@ -96,22 +105,22 @@ export default{
     },
 
     getPastSets: function(id){
+        const note = document.getElementById("previousSession");
+
         for(let i = 0; i < this.pastSessions.length; i++){
             for(let j = 0; j < this.pastSessions[i].exercises.length; j++){
                 if(this.pastSessions[i].exercises[j].exerciseId === id){
+                    note.textContent = "*Data autofilled from previous workout";
                     return this.pastSessions[i].exercises[j].sets;
                 }
             }
         }
 
+        note.textContent = "*No previous workout data";
         return [{weight: 0, reps: 0}, {weight: 0, reps: 0}, {weight: 0, reps: 0}];
     },
 
     finish: function(){
-        //save to database
-        //delete from localStorage
-
-        console.log(this.currentSession);
         this.currentSession.end = new Date();
         fetch(`/session`, {
             method: "POST",
@@ -127,6 +136,10 @@ export default{
                 }else{
                     notify("success", "Workout completed and saved");
                     localStorage.removeItem(this.currentSession.workout);
+                    this.workout = null;
+                    this.exerciseIndex = 0;
+                    this.pastSessions = null;
+                    this.currentSession = null;
                     changePage("home");
                 }
             })

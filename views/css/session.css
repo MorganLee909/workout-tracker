@@ -4,18 +4,6 @@
     padding-bottom: 25px;
 }
 
-#previousSession{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 10%;
-    width: 100%;
-    border: 1px solid var(--primary);
-    border-radius: 25px;
-    margin-bottom: 15px;
-}
-
 #noSessionText{
     color: white;
     font-size: 18px;
@@ -24,7 +12,6 @@
 #sessionPage h1{
     text-align: center;
     text-decoration: underline;
-    margin-bottom: 15px;
 }
 
 .weightSet{
