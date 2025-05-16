@@ -19,9 +19,9 @@ const getRoute = async (req, res, next)=>{
 
 const addNoteRoute = async (req, res, next)=>{
     try{
-        const workout = await Workout.find({_id: req.params.workoutId});
+        const workout = await Workout.findOne({_id: req.params.workoutId});
         confirmOwnership(workout, res.locals.user);
-        const exercise = findExercise(workout, req.body.exerciseId);
+        const exercise = findExercise(workout, req.body.exercise);
         exercise.notes = req.body.note;
         await workout.save();
         res.json(responseWorkout(workout));
@@ -61,7 +61,7 @@ const confirmOwnership = (workout, user)=>{
  */
 const findExercise = (workout, exerciseId)=>{
     for(let i = 0; i < workout.exercises.length; i++){
-        if(workout.exercises._id.toString === exerciseId){
+        if(workout.exercises[i]._id.toString() === exerciseId){
             return workout.exercises[i];
         }
     }

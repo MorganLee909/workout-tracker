@@ -46,9 +46,7 @@ export default {
             document.getElementById("finishSessionBtn").addEventListener("click", ()=>{this.finish()});
             document.getElementById("sessionAddSet").addEventListener("click", ()=>{this.addSet()});
             document.getElementById("sessionNotesBtn").addEventListener("click", this.displayNotes.bind(this));
-            document.getElementById("sessionNotesDone").addEventListener("click", (event)=>{
-                event.target.parentElement.style.display = "none";
-            });
+            document.getElementById("sessionNotesDone").addEventListener("click", this.closeNote.bind(this));
             this.rendered = true;
         }
     },
@@ -58,10 +56,36 @@ export default {
         container.style.display = "flex";
 
         const textarea = container.querySelector("textarea");
-        textarea.textContent = this.currentSession.exercises[this.exerciseIndex].notes;
-        textarea.addEventListener("input", ()=>{
-            this.currentSession.exercises[this.exerciseIndex].notes = textarea.value;
-        });
+        textarea.textContent = this.workout.exercises[this.exerciseIndex].notes;
+    },
+
+    closeNote: function(){
+        const exercise = this.workout.exercises.find(e => e._id === this.currentSession.exercises[this.exerciseIndex].exerciseId);
+        const newNote = document.getElementById("sessionTextArea").value;
+        if(exercise.notes !== newNote){
+            fetch(`/workout/${this.workout.id}/note`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    exercise: this.currentSession.exercises[this.exerciseIndex].exerciseId,
+                    note: newNote
+                })
+            })
+                .then(r=>r.json())
+                .then((response)=>{
+                    if(response.error){
+                        notify("error", response.error.message);
+                    }
+                    exercise.notes = newNote;
+                })
+                .catch((err)=>{
+                    notify("error", "ERROR: unable to save note");
+                });
+        }
+
+        document.getElementById("sessionNotesText").style.display = "none";
     },
 
     addSet: function(){
