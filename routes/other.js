@@ -3,5 +3,7 @@ export default (app)=>{
     app.get("/index.js", (req, res)=>res.sendFile(`${global.cwd}/views/build/index.js`));
     app.get("/index.css", (req, res)=>res.sendFile(`${global.cwd}/views/build/index.css`));
     app.get("/logo.svg", (req, res)=>res.sendFile(`${global.cwd}/views/logo.svg`));
+    app.get("/logo.png", (req, res)=>res.sendFile(`${global.cwd}/views/logo.png`));
     app.get("/manifest.json", (req, res)=>res.sendFile(`${global.cwd}/views/manifest.json`));
+    app.get("/serviceWorker.js", (req, res)=>res.sendFile(`${global.cwd}/views/serviceWorker.js`));
 }
