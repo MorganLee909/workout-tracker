@@ -16,13 +16,19 @@ const userAuth = async (req, res, next)=>{
         next();
     }catch(e){
         if(e.message === "Cannot read properties of undefined (reading 'split')"){
-            const error = new CustomError(400, "Must provide authorization token");
+            const error = new HttpError(400, "Must provide authorization token");
             catchError(error, req, res, next);
             return;
         }
 
         if(e.message === "jwt malformed"){
-            const error = new CustomError(400, "Invalid JWT");
+            const error = new HttpError(400, "Invalid JWT");
+            catchError(error, req, res, next);
+            return;
+        }
+
+        if(e.message === "jwt must be provided"){
+            const error = new HttpError(400, "No auth");
             catchError(error, req, res, next);
             return;
         }
