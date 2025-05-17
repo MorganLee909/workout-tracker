@@ -56,7 +56,7 @@ export default {
         container.style.display = "flex";
 
         const textarea = container.querySelector("textarea");
-        textarea.textContent = this.workout.exercises[this.exerciseIndex].notes;
+        textarea.value = this.workout.exercises[this.exerciseIndex].notes || "";
     },
 
     closeNote: function(){
