@@ -216,6 +216,24 @@ window.data = [
         }]
     },
     {
+        type: "route",
+        id: "updateWorkout",
+        title: "Update",
+        url: "PUT /workout/:workoutId",
+        auth: true,
+        description: "Update a workout. Specifically the exercises in the workout",
+        requestBody: [{
+            name: "existingExercises",
+            type: "[Object]",
+            desc: "List of exercises in order. Existing exercises should be {id: <ExerciseId>} and new exercises should be {new: <ExerciseName>}"
+        }],
+        responseBody: [{
+            name: "N/A",
+            type: "Workout",
+            desc: "Workout object"
+        }]
+    },
+    {
         type: "object",
         title: "Session",
         id: "session",

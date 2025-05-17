@@ -21,6 +21,11 @@ const WorkoutSchema = new mongoose.Schema({
         type: {
             type: String,
             required: true
+        },
+        archived: {
+            type: Boolean,
+            required: true,
+            default: false
         }
     }]
 });

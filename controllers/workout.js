@@ -21,8 +21,17 @@ const addNoteRoute = async (req, res, next)=>{
     try{
         const workout = await Workout.findOne({_id: req.params.workoutId});
         confirmOwnership(workout, res.locals.user);
-        const exercise = findExercise(workout, req.body.exercise);
+        const exercise = findExercise(workout.exercises, req.body.exercise);
         exercise.notes = req.body.note;
+        await workout.save();
+        res.json(responseWorkout(workout));
+    }catch(e){next(e)}
+}
+
+const updateWorkoutRoute = async (req, res, next)=>{
+    try{
+        const workout = await Workout.findOne({_id: req.params.workoutId});
+        workout.exercises = updateExercises(workout, req.body);
         await workout.save();
         res.json(responseWorkout(workout));
     }catch(e){next(e)}
@@ -69,6 +78,40 @@ const findExercise = (workout, exerciseId)=>{
 }
 
 /*
+ Update the order of exercises
+ @param {Workout} workout - Workout object
+ @param {Object} data - Request data containing exercise information
+ @return {[Object]} - Array of updated exercises
+ */
+const updateExercises = (exercises, data)=>{
+    const newExercises = [];
+    const existingIndices = [];
+    for(let i = 0; i < data.length; i++){
+        if(data[i].id){
+            const j = exercises.findIndex(e => e._id.toString() === data[i].id);
+            newExercises.push(exercises[j]);
+            existingIndices.push(j);
+        }else if(data[i].new){
+            newExercises.push({
+                name: data[i].new,
+                notes: "",
+                type: data[i].type,
+                archived: false
+            });
+        }
+    }
+
+    for(let i = 0; i < exercises.length; i++){
+        if(existingIndices.includes(i)) continue;
+
+        exercises[i].archived = true;
+        newExercises.push(exercises[i]);
+    }
+
+    return newExercises;
+}
+
+/*
  Create a new workout object for sending to the frontend
  @param {Workout} workout - Workout object
  @return {Object} - Modified Workout object
@@ -84,5 +127,6 @@ const responseWorkout = (workout)=>{
 export {
     createRoute,
     getRoute,
-    addNoteRoute
+    addNoteRoute,
+    updateWorkoutRoute
 }
