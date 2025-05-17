@@ -40,7 +40,32 @@ window.changePage = (page, data)=>{
 if("serviceWorker" in navigator){
     window.addEventListener("load", ()=>{
         navigator.serviceWorker.register("/serviceWorker.js")
-            .then(reg => console.log("Service worker registered:", reg))
-            .catch(err => console.error("Service worker registration failed:", err));
+            .then(reg => null)
+            .catch(err => null);
     });
 }
+
+let deferredPrompt;
+const installBtn = document.getElementById("installPwa");
+let isPwaInstalled = ()=>{
+    return window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+}
+
+if(isPwaInstalled()){
+    installBtn.style.display = "none";
+}
+
+window.addEventListener("beforeinstallprompt", (e)=>{
+    e.preventDefault();
+    deferredPrompt = e;
+});
+
+installBtn.addEventListener("click", async ()=>{
+    if(deferredPrompt){
+        deferredPrompt.prompt();
+        const {outcome} = await deferredPrompt.userChoice;
+        deferredPrompt = null;
+        console.log(outcome); //accepted
+        if(outcome === "accepted") installBtn.style.display = "none";
+    }
+});
