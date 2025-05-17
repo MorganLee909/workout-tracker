@@ -225,7 +225,7 @@ window.data = [
         requestBody: [{
             name: "existingExercises",
             type: "[Object]",
-            desc: "List of exercises in order. Existing exercises should be {id: <ExerciseId>} and new exercises should be {new: <ExerciseName>}"
+            desc: "List of exercises in order. Existing exercises should be {id: <ExerciseId>} and new exercises should be {new: <ExerciseName>, type: <ExerciseType>}"
         }],
         responseBody: [{
             name: "N/A",

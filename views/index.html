@@ -126,10 +126,7 @@
 
     <div id="workoutMenuPage", class="page" style="display:none">
         <h1 id="workoutMenuTitle"></h1>
-        <div class="workoutMenuButtons">
-            <button id="menuStartWorkout" class="button">Start Workout</button>
-            <button id="menuReturnHome" class="button">Back</button>
-        </div>
+        <div id="workoutMenuButtons"></div>
 
         <div id="resumeWorkoutContainer" style="display:none">
             <h2>You have a previously unfinished session for this workout. What would you like to to?</h2>
@@ -174,6 +171,20 @@
                 <label>Reps
                     <input class="weightSetReps" type="number" step="1">
                 </label>
+            </div>
+        </template>
+    </div>
+
+    <div id="editWorkoutPage" class="page" style="display:none">
+        <h1></h1>
+
+        <div id="editWorkoutExercises"></div>
+
+        <button id="editWorkoutBack" class="button">Cancel</button>
+
+        <template id="editWorkoutExercise">
+            <div class="editWorkoutExercise">
+                <p></p>
             </div>
         </template>
     </div>

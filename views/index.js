@@ -4,6 +4,7 @@ import homePage from "./js/pages/home.js";
 import workoutMenuPage from "./js/pages/workoutMenu.js";
 import newWorkoutPage from "./js/pages/newWorkout.js";
 import sessionPage from "./js/pages/session.js";
+import editWorkoutPage from "./js/pages/editWorkout.js";
 
 const notifier = document.getElementById("notifier");
 const pageElements = document.querySelectorAll(".page");
@@ -34,6 +35,7 @@ window.changePage = (page, data)=>{
         case "newWorkout": newWorkoutPage.render();
         case "session": sessionPage.render(data); break;
         case "workoutMenu": workoutMenuPage.render(data); break;
+        case "editWorkout": editWorkoutPage.render(data); break;
     }
 }
 

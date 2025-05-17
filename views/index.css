@@ -4,6 +4,7 @@
 @import "./css/workoutMenu.css";
 @import "./css/newWorkout.css";
 @import "./css/session.css";
+@import "./css/editWorkout.css";
 
 :root{
     --primary: #d7263d;

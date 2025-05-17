@@ -5,7 +5,15 @@ export default {
     },
 
     buttons: function(workout){
-        document.getElementById("menuStartWorkout").addEventListener("click", ()=>{
+        const container = document.getElementById("workoutMenuButtons");
+        while(container.children.length > 0){
+            container.removeChild(container.firstChild);
+        }
+
+        const start = document.createElement("button");
+        start.classList.add("button");
+        start.textContent = "Start Workout";
+        start.addEventListener("click", ()=>{
             const existingWorkout = localStorage.getItem(workout.id);
             if(existingWorkout === null){
                 changePage("session", workout);
@@ -15,10 +23,19 @@ export default {
                 this.addResumeButtons(container, workout);
             }
         });
+        container.appendChild(start);
 
-        document.getElementById("menuReturnHome").addEventListener("click", ()=>{
-            changePage("home");
-        });
+        const edit = document.createElement("button");
+        edit.classList.add("button");
+        edit.textContent = "Edit Workout";
+        edit.addEventListener("click", ()=>{changePage("editWorkout", workout)});
+        container.appendChild(edit);
+
+        const back = document.createElement("button");
+        back.classList.add("button");
+        back.textContent = "Back";
+        back.addEventListener("click", ()=>{changePage("home")});
+        container.appendChild(back);
     },
 
     addResumeButtons: function(container, workout){
