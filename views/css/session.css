@@ -48,6 +48,7 @@
 #sessionPage h1{
     text-align: center;
     text-decoration: underline;
+    margin-top: 15px;
 }
 
 .weightSet{
