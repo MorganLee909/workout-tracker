@@ -50,7 +50,32 @@ export default {
             document.getElementById("sessionAddSet").addEventListener("click", ()=>{this.addSet()});
             document.getElementById("sessionNotesBtn").addEventListener("click", this.displayNotes.bind(this));
             document.getElementById("sessionNotesDone").addEventListener("click", this.closeNote.bind(this));
+            document.getElementById("sessionExercisesBtn").addEventListener("click", this.displayExerciseList.bind(this));
+            document.getElementById("closeExerciseList").addEventListener("click", ()=>{
+                document.getElementById("sessionExercisesList").style.display = "none";
+            });
             this.rendered = true;
+        }
+    },
+
+    displayExerciseList: function(){
+        const list = document.getElementById("sessionExercisesList");
+        list.style.display = "flex";
+
+        const buttons = list.querySelectorAll(".exerciseListButton");
+        for(let i = 0; i < buttons.length; i++){
+            buttons[i].parentElement.removeChild(buttons[i]);
+        }
+
+        for(let i = 0; i < this.workout.exercises.length; i++){
+            const button = document.createElement("button");
+            button.classList.add("exerciseListButton");
+            button.textContent = `${i+1}: ${this.workout.exercises[i].name}`;
+            button.addEventListener("click", ()=>{
+                this.changeExercise(i);
+                list.style.display = "none";
+            });
+            list.appendChild(button);
         }
     },
 

@@ -12,6 +12,51 @@
     right: 15px;
 }
 
+#sessionExercisesBtn{
+    position: absolute;
+    top: 60px;
+    left: 15px;
+}
+
+#sessionExercisesList{
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: var(--dark);
+    overflow-y: auto;
+    z-index: 3;
+}
+
+#closeExerciseList{
+    background: linear-gradient(to right, var(--accent), var(--primary));
+    border: none;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 22px;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+    color: var(--dark);
+}
+
+#sessionExercisesList .exerciseListButton{
+    align-self: center;
+    background: linear-gradient(to right, var(--accent), var(--primary), var(--accent));
+    background-clip: text;
+    color: transparent;
+    border: none;
+    font-size: 22px;
+    margin: 15px 0;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 #sessionNotesBtn{
     margin-bottom: 5px;
 }
