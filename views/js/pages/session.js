@@ -43,7 +43,9 @@ export default {
 
         if(!this.rendered){
             nextSessionBtn.addEventListener("click", ()=>{
+                console.log(this.currentSession.exercises[this.exerciseIndex].done);
                 this.currentSession.exercises[this.exerciseIndex].done = true;
+                console.log(this.currentSession.exercises[this.exerciseIndex].done);
                 this.changeExercise(this.exerciseIndex + 1);
             });
             document.getElementById("finishSessionBtn").addEventListener("click", ()=>{this.finish()});
@@ -70,11 +72,18 @@ export default {
         for(let i = 0; i < this.workout.exercises.length; i++){
             const button = document.createElement("button");
             button.classList.add("exerciseListButton");
-            button.textContent = `${i+1}: ${this.workout.exercises[i].name}`;
+            if(this.exerciseIndex === i){
+                button.textContent = `*${this.workout.exercises[i].name}`;
+            }else{
+                button.textContent = this.workout.exercises[i].name;
+            }
             button.addEventListener("click", ()=>{
                 this.changeExercise(i);
                 list.style.display = "none";
             });
+            if(this.currentSession.exercises[i]?.done){
+                button.style.color = "white";
+            }
             list.appendChild(button);
         }
     },

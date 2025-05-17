@@ -51,10 +51,9 @@
     background-clip: text;
     color: transparent;
     border: none;
-    font-size: 22px;
-    margin: 15px 0;
+    font-size: 25px;
+    margin: 10px 0;
     cursor: pointer;
-    text-decoration: underline;
 }
 
 #sessionNotesBtn{
