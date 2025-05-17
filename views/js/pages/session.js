@@ -43,9 +43,7 @@ export default {
 
         if(!this.rendered){
             nextSessionBtn.addEventListener("click", ()=>{
-                console.log(this.currentSession.exercises[this.exerciseIndex].done);
                 this.currentSession.exercises[this.exerciseIndex].done = true;
-                console.log(this.currentSession.exercises[this.exerciseIndex].done);
                 this.changeExercise(this.exerciseIndex + 1);
             });
             document.getElementById("finishSessionBtn").addEventListener("click", ()=>{this.finish()});
@@ -156,8 +154,11 @@ export default {
     changeExercise: function(num){
         this.exerciseIndex = num;
         localStorage.setItem(this.workout.id, JSON.stringify(this.currentSession));
+        const nextBtn = document.getElementById("nextSessionBtn");
         if(this.exerciseIndex === this.workout.exercises.length-1){
-            document.getElementById("nextSessionBtn").style.display = "none";
+            nextBtn.style.display = "none";
+        }else{
+            nextBtn.style.display = "block";
         }
 
         let exercise = null;
