@@ -69,6 +69,7 @@
     height: 35%;
     min-height: 275px;
     width: 95%;
+    max-width: 750px;
     padding: 25px 10px;
     box-shadow: 0 0 5px var(--text);
     background: var(--gray);
@@ -138,4 +139,10 @@
     max-width: 550px;
     padding: 15px 0;
     margin-top: 25px;
+}
+
+@media screen and (min-width: 750px){
+    #sessionNotesText{
+        left: calc(50% - 375px);
+    }
 }
