@@ -42,7 +42,10 @@ export default {
         nextSessionBtn.style.display = "block";
 
         if(!this.rendered){
-            nextSessionBtn.addEventListener("click", ()=>{this.changeExercise(1)});
+            nextSessionBtn.addEventListener("click", ()=>{
+                this.currentSession.exercises[this.exerciseIndex].done = true;
+                this.changeExercise(this.exerciseIndex + 1);
+            });
             document.getElementById("finishSessionBtn").addEventListener("click", ()=>{this.finish()});
             document.getElementById("sessionAddSet").addEventListener("click", ()=>{this.addSet()});
             document.getElementById("sessionNotesBtn").addEventListener("click", this.displayNotes.bind(this));
@@ -108,7 +111,7 @@ export default {
             workout: workout.id,
             start: new Date(),
             notes: "",
-            exercises: [],
+            exercises: Array(this.workout.exercises.length).fill(null),
             exerciseIndex: this.exerciseIndex
         };
 
@@ -117,14 +120,12 @@ export default {
     },
 
     changeExercise: function(num){
-        if(num !== 0){
-            this.currentSession.exerciseIndex = this.exerciseIndex + 1;
-            localStorage.setItem(this.workout.id, JSON.stringify(this.currentSession));
-        }
-        this.exerciseIndex += num;
+        this.exerciseIndex = num;
+        localStorage.setItem(this.workout.id, JSON.stringify(this.currentSession));
         if(this.exerciseIndex === this.workout.exercises.length-1){
             document.getElementById("nextSessionBtn").style.display = "none";
         }
+
         let exercise = null;
         if(this.currentSession.exercises[this.exerciseIndex]){
             exercise = this.currentSession.exercises[this.exerciseIndex];
@@ -135,9 +136,10 @@ export default {
                 name: workoutExercise.name,
                 type: workoutExercise.type,
                 notes: "",
-                sets: this.getPastSets(workoutExercise._id)
+                sets: this.getPastSets(workoutExercise._id),
+                done: false
             }
-            this.currentSession.exercises.push(exercise);
+            this.currentSession.exercises[this.exerciseIndex] = exercise;
         }
 
         document.getElementById("sessionExerciseName").textContent = exercise.name;
