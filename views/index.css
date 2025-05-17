@@ -113,4 +113,5 @@ body{
     font-size: 22px;
     cursor: pointer;
     position: relative;
+    -webkit-tap-highlight-color: transparent;
 }
