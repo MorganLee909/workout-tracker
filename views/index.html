@@ -177,9 +177,25 @@
     </div>
 
     <div id="editWorkoutPage" class="page" style="display:none">
+        <button
+            id="editWorkoutAddExercise"
+            aria-label="Add Exercise"
+            class="button"
+        >+ Exercise</button>
+
         <h1></h1>
 
         <div id="editWorkoutExercises"></div>
+
+        <div id="newExerciseContainer" style="display:none">
+            <input
+                id="newExerciseInput"
+                type="text"
+                placeholder="New Exercise"
+            />
+
+            <button id="newExerciseSubmit">&#10003;</button>
+        </div>
 
         <button id="editWorkoutBack" class="button">Cancel</button>
 

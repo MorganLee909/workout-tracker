@@ -13,6 +13,12 @@ export default {
 
     buttons: function(){
         document.getElementById("editWorkoutBack").addEventListener("click", ()=>{changePage("home")});
+        document.getElementById("editWorkoutAddExercise").addEventListener("click", ()=>{
+            const container = document.getElementById("newExerciseContainer");
+            container.style.display = "flex";
+            container.querySelector("input").focus();
+        });
+        document.getElementById("newExerciseSubmit").addEventListener("click", this.addExercise.bind(this));
     },
 
     displayExercises: function(exercises){
@@ -44,5 +50,26 @@ export default {
         }else{
             elem.parentElement.insertBefore(otherElem, elem);
         }
+    },
+
+    addExercise: function(){
+        const container = document.getElementById("editWorkoutExercises");
+        const template = document.getElementById("editWorkoutExercise").content.children[0];
+        const input = document.getElementById("newExerciseInput");
+
+        const exercise = template.cloneNode(true);
+        exercise.querySelector("p").textContent = input.value;
+        exercise.querySelector(".editWorkoutDelete").addEventListener("click", ()=>{
+            container.removeChild(exercise);
+        });
+        exercise.querySelector(".workoutMoveUp").addEventListener("click", (e)=>{
+            this.moveExercise(e.target.parentElement.parentElement, true);
+        });
+        exercise.querySelector(".workoutMoveDown").addEventListener("click", (e)=>{
+            this.moveExercise(e.target.parentElement.parentElement, true);
+        });
+        container.appendChild(exercise);
+
+        input.value = "";
     }
 }
