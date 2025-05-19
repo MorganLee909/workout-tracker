@@ -9,7 +9,6 @@ import editWorkoutPage from "./js/pages/editWorkout.js";
 const notifier = document.getElementById("notifier");
 const pageElements = document.querySelectorAll(".page");
 
-
 window.notify = (type, message)=>{
     notifier.className = "";
     notifier.classList.add(type);
@@ -38,23 +37,11 @@ window.changePage = (page, data)=>{
     }
 }
 
-fetch("/user", {
-    method: "GET",
-    header: {
-        "Content-Type": "application/json"
-    }
-})
-    .then(r=>r.json())
-    .then((response)=>{
-        if(response.error){
-            changePage("login");
-        }else{
-            changePage("home");
-        }
-    })
-    .catch((err)=>{
-        changePage("login");
-    });
+if(localStorage.getItem("loggedIn") === "true"){
+    changePage("home");
+}else{
+    changePage("login");
+}
 
 if("serviceWorker" in navigator){
     window.addEventListener("load", ()=>{

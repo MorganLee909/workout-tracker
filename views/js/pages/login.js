@@ -35,6 +35,7 @@ export default {
                     if(response.error){
                         notify("error", response.error.message);
                     }else{
+                        localStorage.setItem("loggedIn", "true");
                         changePage("home", response);
                     }
                 })
