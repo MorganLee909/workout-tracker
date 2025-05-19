@@ -20,6 +20,7 @@ export default {
                     if(response.error){
                         notify("error", response.error.message);
                     }else{
+                        localStorage.removeItem("loggedIn");
                         changePage("login");
                     }
                 })
