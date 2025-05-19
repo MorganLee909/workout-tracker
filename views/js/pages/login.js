@@ -4,8 +4,6 @@ export default {
     render: function(){
         document.getElementById("loginEmail").focus();
 
-        this.checkUser();
-
         if(!this.rendered){
             this.buttons();
             this.createSubmit();

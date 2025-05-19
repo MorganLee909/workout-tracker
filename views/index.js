@@ -9,7 +9,6 @@ import editWorkoutPage from "./js/pages/editWorkout.js";
 const notifier = document.getElementById("notifier");
 const pageElements = document.querySelectorAll(".page");
 
-loginPage.render();
 
 window.notify = (type, message)=>{
     notifier.className = "";
@@ -39,6 +38,24 @@ window.changePage = (page, data)=>{
     }
 }
 
+fetch("/user", {
+    method: "GET",
+    header: {
+        "Content-Type": "application/json"
+    }
+})
+    .then(r=>r.json())
+    .then((response)=>{
+        if(response.error){
+            changePage("login");
+        }else{
+            changePage("home");
+        }
+    })
+    .catch((err)=>{
+        changePage("login");
+    });
+
 if("serviceWorker" in navigator){
     window.addEventListener("load", ()=>{
         navigator.serviceWorker.register("/serviceWorker.js")
@@ -67,7 +84,6 @@ installBtn.addEventListener("click", async ()=>{
         deferredPrompt.prompt();
         const {outcome} = await deferredPrompt.userChoice;
         deferredPrompt = null;
-        console.log(outcome); //accepted
         if(outcome === "accepted") installBtn.style.display = "none";
     }
 });
