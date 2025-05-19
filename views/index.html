@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#1a1a1a">
-    <meta name="description" conent="Minimalistic application for logging, tracking, monitoring and improving your workouts">
+    <meta name="description" content="Minimalistic application for logging, tracking, monitoring and improving your workouts">
     <title>Workout Tracker</title>
     <link rel="stylesheet" href="/index.css">
     <link rel="icon" href="/logo.svg" type="image/svg+xml">
@@ -185,7 +185,12 @@
 
         <template id="editWorkoutExercise">
             <div class="editWorkoutExercise">
+                <div class="workoutMove">
+                    <button class="workoutMoveUp" aria-label="Move up">&#9650;</button>
+                    <button class="workoutMoveDown" aria-label="Move down">&#9660;</button>
+                </div>
                 <p></p>
+                <button class="editWorkoutDelete" aria-label="Delete">X</button>
             </div>
         </template>
     </div>

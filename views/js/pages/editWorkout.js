@@ -4,6 +4,7 @@ export default {
     render: function(workout){
         document.querySelector("#editWorkoutPage h1").textContent = workout.name;
         this.displayExercises(workout.exercises);
+
         if(!this.rendered){
             this.buttons();
             this.rendered = true;
