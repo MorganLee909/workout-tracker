@@ -210,7 +210,7 @@ export default {
         weightInput.addEventListener("input", ()=>{set.weight = weightInput.value});
 
         const repInput = setElem.querySelector(".weightSetReps");
-        if(set.reps > 0) repInput.value = set.reps;
+        if(set.reps !== 0) repInput.value = set.reps;
         repInput.addEventListener("input", ()=>{set.reps = repInput.value});
 
         return setElem;
