@@ -57,6 +57,11 @@ export default {
         const template = document.getElementById("editWorkoutExercise").content.children[0];
         const input = document.getElementById("newExerciseInput");
 
+        if(input.value === ""){
+            notify("error", "Exercise must have a name");
+            return;
+        }
+
         const exercise = template.cloneNode(true);
         exercise.querySelector("p").textContent = input.value;
         exercise.querySelector(".editWorkoutDelete").addEventListener("click", ()=>{
