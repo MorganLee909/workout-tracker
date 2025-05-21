@@ -16,8 +16,14 @@ export default async ()=>{
     const htmlProm = fs.readFile(`${import.meta.dirname}/views/index.html`, "utf-8");
     const [build, html] = await Promise.all([esbuildProm, htmlProm]);
 
-    const js = build.outputFiles[0].text;
-    const css = build.outputFiles[1].text;
+    let js, css;
+    for(let i = 0; i < build.outputFiles.length; i++){
+        if(build.outputFiles[i].path.endsWith(".js")){
+            js = build.outputFiles[i].text;
+        }else if(build.outputFiles[i].path.endsWith(".css")){
+            css = build.outputFiles[i].text;
+        }
+    }
 
     let data = await htmlMinifier.minify(html, {
         collapseBooleanAttributes: true,
