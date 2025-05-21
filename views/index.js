@@ -5,6 +5,7 @@ import workoutMenuPage from "./js/pages/workoutMenu.js";
 import newWorkoutPage from "./js/pages/newWorkout.js";
 import sessionPage from "./js/pages/session.js";
 import editWorkoutPage from "./js/pages/editWorkout.js";
+import sessionHistoryPage from "./js/pages/sessionHistory.js";
 
 const notifier = document.getElementById("notifier");
 const pageElements = document.querySelectorAll(".page");
@@ -34,6 +35,7 @@ window.changePage = (page, data)=>{
         case "session": sessionPage.render(data); break;
         case "workoutMenu": workoutMenuPage.render(data); break;
         case "editWorkout": editWorkoutPage.render(data); break;
+        case "sessionHistory": sessionHistoryPage.render(data); break;
     }
 }
 
