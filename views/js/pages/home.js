@@ -2,14 +2,14 @@ export default {
     rendered: false,
     workoutList: document.getElementById("workoutList"),
 
-    render: function(newWorkout){
+    render: function(update){
         if(!this.rendered){
             this.getWorkouts();
             this.buttons();
             this.rendered = true;
         }
 
-        if(newWorkout) this.addWorkout(newWorkout);
+        if(update) this.handleUpdate(update);
     },
 
     buttons: function(){
@@ -72,5 +72,11 @@ export default {
             changePage("workoutMenu", workout);
         });
         this.workoutList.appendChild(button);
+    },
+
+    handleUpdate: function(update){
+        switch(update.type){
+            case "new": this.addWorkout(update.workout); break;
+        }
     }
 }

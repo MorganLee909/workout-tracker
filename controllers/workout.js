@@ -42,8 +42,9 @@ const deleteRoute = async (req, res, next)=>{
     try{
         const workout = await Workout.findOne({_id: req.params.workoutId});
         confirmOwnership(workout, res.locals.user);
-        Workout.deleteOne({_id: workout._id});
-        Session.deleteMany({workout: workout._id});
+        const wp = Workout.deleteOne({_id: workout._id});
+        const sp = Session.deleteMany({workout: workout._id});
+        await Promise.all([wp, sp]);
         res.json({success: true});
     }catch(e){next(e)}
 }

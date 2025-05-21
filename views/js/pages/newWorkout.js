@@ -81,7 +81,10 @@ export default {
                     notify("error", response.error.message);
                 }else{
                     notify("success", "New workout created");
-                    changePage("home", response);
+                    changePage("home", {
+                        type: "new",
+                        workout: response
+                    });
                 }
             })
             .catch((err)=>{

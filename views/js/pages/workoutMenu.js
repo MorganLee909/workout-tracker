@@ -137,5 +137,28 @@ export default {
         modal.appendChild(confirm);
 
         modal.style.display = "flex";
+    },
+
+    delete: function(workout){
+        fetch(`/workout/${workout.id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(r=>r.json())
+            .then((response)=>{
+                if(response.error){
+                    notify("error", response.error.message);
+                }else{
+                    console.log("delete");
+                    //update workouts
+                }
+            })
+            .catch((err)=>{
+                notify("error", "ERROR: unable to delete the workout");
+            });
+
+        document.getElementById("resumeWorkoutContainer").style.display = "none";
     }
 }
