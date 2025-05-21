@@ -234,6 +234,19 @@ window.data = [
         }]
     },
     {
+        type: "route",
+        id: "deleteWorkout",
+        title: "Delete",
+        url: "DELETE /workout/:workoutId",
+        auth: true,
+        description: "Delete a workout and all sessions associated with the workout",
+        responseBody: [{
+            name: "success",
+            type: "true",
+            desc: "Always '{success: true}' if no error"
+        }]
+    },
+    {
         type: "object",
         title: "Session",
         id: "session",

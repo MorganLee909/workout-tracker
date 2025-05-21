@@ -37,6 +37,15 @@ const updateWorkoutRoute = async (req, res, next)=>{
     }catch(e){next(e)}
 }
 
+const deleteRoute = async (req, res, next)=>{
+    try{
+        const workout = await Workout.findOne({_id: req.params.workoutId});
+        confirmOwnership(workout, res.locals.user);
+        Workout.deleteOne({_id: workout._id});
+        res.json({success: true});
+    }catch(e){next(e)}
+}
+
 /*
  Create a new Workout object
  @param {Object} - Body data from the request
@@ -128,5 +137,6 @@ export {
     createRoute,
     getRoute,
     addNoteRoute,
-    updateWorkoutRoute
+    updateWorkoutRoute,
+    deleteRoute
 }
