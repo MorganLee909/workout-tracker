@@ -74,6 +74,7 @@ const confirmWorkoutOwnership = (workout, user)=>{
  */
 const responseSession = (session)=>{
     return {
+        id: session._id,
         workout: session.workout,
         start: session.start,
         end: session.end,

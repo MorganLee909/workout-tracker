@@ -1,15 +1,13 @@
 export default {
     rendered: false,
-    workout: null,
 
     render: function(workout){
-        this.workout = workout;
-
         if(!this.rendered){
-            this.buttons();
+            this.buttons(workout);
             this.rendered = true;
         }
 
+        document.getElementById("sessionHistoryTitle").textContent = workout.name;
         this.populateSessions(workout);
     },
 
@@ -20,7 +18,7 @@ export default {
     },
 
     populateSessions: function(workout){
-        fetch(`/session/${this.workout.id}/all`, {
+        fetch(`/session/${workout.id}/all`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -42,6 +40,10 @@ export default {
 
     showSessions: function(sessions){
         const container = document.getElementById("sessionHistoryItems");
+
+        while(container.children.length > 0){
+            container.removeChild(container.firstChild);
+        }
 
         for(let i = 0; i < sessions.length; i++){
             container.appendChild(this.createSessionButton(sessions[i]));

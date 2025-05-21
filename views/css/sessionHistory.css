@@ -1,0 +1,37 @@
+#sessionHistoryPage{
+    flex-direction: column;
+    
+}
+
+#sessionHistoryPage h1{
+    text-align: center;
+    text-decoration: underline;
+}
+
+#sessionHistoryClose{
+    background: linear-gradient(to right, var(--accent), var(--primary));
+    border: none;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 22px;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+    color: var(--dark);
+}
+
+#sessionHistoryItems{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#sessionHistoryItems > button{
+    margin: 5px 0;
+    width: 100%;
+    max-width: 750px;
+    padding: 15px 0;
+}
