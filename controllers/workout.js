@@ -1,4 +1,5 @@
 import Workout from "../models/Workout.js";
+import Session from "../models/Session.js";
 
 import {HttpError} from "../HttpError.js";
 
@@ -42,6 +43,7 @@ const deleteRoute = async (req, res, next)=>{
         const workout = await Workout.findOne({_id: req.params.workoutId});
         confirmOwnership(workout, res.locals.user);
         Workout.deleteOne({_id: workout._id});
+        Session.deleteMany({workout: workout._id});
         res.json({success: true});
     }catch(e){next(e)}
 }
