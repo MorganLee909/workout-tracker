@@ -28,6 +28,20 @@ const getRoute = async (req, res, next)=>{
     }catch(e){next(e)}
 }
 
+const getAllRoute = async (req, res, next)=>{
+    try{
+        const [workout, sessions] = await Promise.all([
+            Workout.findOne({_id: req.params.workoutId}),
+            Session.aggregate([
+                {$match: {workout: new ObjectId(req.params.workoutId)}},
+                {$sort: {start: -1}}
+            ])
+        ]);
+        confirmWorkoutOwnership(workout, res.locals.user);
+        res.json(sessions.map(s => responseSession(s)));
+    }catch(e){next(e)}
+}
+
 /*
  Create a new Session object
  @param {Object} - Body data from the object
@@ -69,5 +83,6 @@ const responseSession = (session)=>{
 
 export {
     createRoute,
-    getRoute
+    getRoute,
+    getAllRoute
 }
