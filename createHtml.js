@@ -32,7 +32,7 @@ export default async ()=>{
     data = data.replace('<script src="/index.js"></script>', `<script>${js}</script>`);
     data = data.replace('<link rel="stylesheet" href="/index.css">', `<style>${css}</style>`);
 
-    if(process.env.NODE_ENV !== "process"){
+    if(process.env.NODE_ENV !== "production"){
         fs.writeFile(`${import.meta.dirname}/build.html`, data);
     }
 
