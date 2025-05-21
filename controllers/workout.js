@@ -31,7 +31,7 @@ const addNoteRoute = async (req, res, next)=>{
 const updateWorkoutRoute = async (req, res, next)=>{
     try{
         const workout = await Workout.findOne({_id: req.params.workoutId});
-        workout.exercises = updateExercises(workout, req.body);
+        workout.exercises = updateExercises(workout.exercises, req.body);
         await workout.save();
         res.json(responseWorkout(workout));
     }catch(e){next(e)}
@@ -86,16 +86,16 @@ const findExercise = (workout, exerciseId)=>{
 const updateExercises = (exercises, data)=>{
     const newExercises = [];
     const existingIndices = [];
-    for(let i = 0; i < data.length; i++){
-        if(data[i].id){
-            const j = exercises.findIndex(e => e._id.toString() === data[i].id);
+    for(let i = 0; i < data.existingExercises.length; i++){
+        if(data.existingExercises[i].id){
+            const j = exercises.findIndex(e => e._id.toString() === data.existingExercises[i].id);
             newExercises.push(exercises[j]);
             existingIndices.push(j);
-        }else if(data[i].new){
+        }else if(data.existingExercises[i].new){
             newExercises.push({
-                name: data[i].new,
+                name: data.existingExercises[i].new,
                 notes: "",
-                type: data[i].type,
+                type: data.existingExercises[i].type,
                 archived: false
             });
         }
