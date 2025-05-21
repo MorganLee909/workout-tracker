@@ -3,7 +3,7 @@ import compression from "compression";
 import mongoose from "mongoose";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import esbuild from "esbuild";
+import createHtml from "./createHtml.js";
 
 import {catchError} from "./HttpError.js";
 
@@ -12,6 +12,7 @@ import userRoutes from "./routes/user.js";
 import workoutRoutes from "./routes/workout.js";
 import sessionRoutes from "./routes/session.js";
 
+
 let mongoString = "mongodb://127.0.0.1/workout";
 if(process.env.NODE_ENV === "production"){
     mongoString = `mongodb://workout:${process.env.MONGODB_PASS}@127.0.0.1:27017/workout?authSource=admin`;
@@ -19,14 +20,7 @@ if(process.env.NODE_ENV === "production"){
 
 mongoose.connect(mongoString);
 global.cwd = import.meta.dirname;
-
-esbuild.build({
-    entryPoints: [`${global.cwd}/views/index.js`, `${global.cwd}/views/index.css`],
-    bundle: true,
-    minify: true,
-    sourcemap: process.env.NODE_ENV === "production",
-    outdir: `${global.cwd}/views/build/`
-});
+global.html = await createHtml();
 
 const app = express();
 
@@ -49,3 +43,4 @@ if(process.env.NODE_ENV !== "production"){
     app.listen(8000);
 }
 export default app;
+
