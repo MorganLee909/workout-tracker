@@ -16,7 +16,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js --ignore views/build/ --ext js,css,html"
+    "dev": "nodemon app.js --ignore views/build/ --ignore build.html --ext js,css,html"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",

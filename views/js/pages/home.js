@@ -60,19 +60,21 @@ export default {
         }
 
         for(let i = 0; i < workouts.length; i++){
-            this.addWorkout(workouts[i]);
+            this.workoutList.appendChild(this.createWorkoutElem(workouts[i]));
         }
     },
 
     handleUpdate: function(update){
         switch(update.type){
-            case "new": this.addWorkout(update.workout); break;
+            case "new":
+                this.workoutList.appendChild(this.createWorkoutElem(update.workout));
+                break;
             case "remove": this.removeWorkout(update.workout); break;
             case "replace": this.replaceWorkout(update.workout); break;
         }
     },
 
-    addWorkout: function(workout){
+    createWorkoutElem: function(workout){
         const button = document.createElement("button");
         button.workoutId = workout.id;
         button.classList.add("button");
@@ -80,7 +82,7 @@ export default {
         button.addEventListener("click", ()=>{
             changePage("workoutMenu", workout);
         });
-        this.workoutList.appendChild(button);
+        return button;
     },
 
     removeWorkout: function(workoutId){
@@ -97,8 +99,7 @@ export default {
         const workouts = this.workoutList.children;
         for(let i = 0; i < workouts.length; i++){
             if(workouts[i].workoutId === workout.id){
-                this.workoutList.removeChild(workouts[i]);
-                this.addWorkout(workout);
+                workouts[i].replaceWith(this.createWorkoutElem(workout));
                 break;
             }
         }
