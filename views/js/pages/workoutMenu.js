@@ -151,8 +151,10 @@ export default {
                 if(response.error){
                     notify("error", response.error.message);
                 }else{
-                    console.log("delete");
-                    //update workouts
+                    changePage("home", {
+                        type: "remove",
+                        workout: workout.id
+                    });
                 }
             })
             .catch((err)=>{

@@ -129,11 +129,18 @@ const updateExercises = (exercises, data)=>{
  @return {Object} - Modified Workout object
  */
 const responseWorkout = (workout)=>{
-    return {
+    const data = {
         id: workout._id,
         name: workout.name,
-        exercises: workout.exercises
+        exercises: []
     };
+
+    for(let i = 0; i < workout.exercises.length; i++){
+        if(workout.exercises[i].archived) continue;
+        data.exercises.push(workout.exercises[i]);
+    }
+
+    return data;
 }
 
 export {

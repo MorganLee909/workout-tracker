@@ -116,7 +116,10 @@ export default {
                     notify("error", response.error.message);
                 }else{
                     notify("success", "Workout updated");
-                    changePage("workoutMenu", response);
+                    changePage("home", {
+                        type: "replace",
+                        workout: response
+                    });
                 }
             })
             .catch((err)=>{

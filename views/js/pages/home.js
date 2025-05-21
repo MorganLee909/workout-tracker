@@ -64,8 +64,17 @@ export default {
         }
     },
 
+    handleUpdate: function(update){
+        switch(update.type){
+            case "new": this.addWorkout(update.workout); break;
+            case "remove": this.removeWorkout(update.workout); break;
+            case "replace": this.replaceWorkout(update.workout); break;
+        }
+    },
+
     addWorkout: function(workout){
         const button = document.createElement("button");
+        button.workoutId = workout.id;
         button.classList.add("button");
         button.textContent = workout.name;
         button.addEventListener("click", ()=>{
@@ -74,9 +83,24 @@ export default {
         this.workoutList.appendChild(button);
     },
 
-    handleUpdate: function(update){
-        switch(update.type){
-            case "new": this.addWorkout(update.workout); break;
+    removeWorkout: function(workoutId){
+        const workouts = this.workoutList.children;
+        for(let i = 0; i < workouts.length; i++){
+            if(workouts[i].workoutId === workoutId){
+                this.workoutList.removeChild(workouts[i]);
+                break;
+            }
+        }
+    },
+
+    replaceWorkout: function(workout){
+        const workouts = this.workoutList.children;
+        for(let i = 0; i < workouts.length; i++){
+            if(workouts[i].workoutId === workout.id){
+                this.workoutList.removeChild(workouts[i]);
+                this.addWorkout(workout);
+                break;
+            }
         }
     }
 }
