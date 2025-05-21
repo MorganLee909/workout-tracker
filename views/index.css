@@ -116,3 +116,17 @@ body{
     position: relative;
     -webkit-tap-highlight-color: transparent;
 }
+
+.dangerButton{
+    background: linear-gradient(to bottom right, var(--accent), var(--primary), var(--accent));
+    border-radius: 15px;
+    border: none;
+    padding: 5px 25px;
+    font-size: 22px;
+    cursor: pointer;
+    position: relative;
+}
+
+.dangerText{
+    color: var(--primary);
+}

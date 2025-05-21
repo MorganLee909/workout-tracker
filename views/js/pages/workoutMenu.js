@@ -31,6 +31,12 @@ export default {
         edit.addEventListener("click", ()=>{changePage("editWorkout", workout)});
         container.appendChild(edit);
 
+        const remove = document.createElement("button");
+        remove.classList.add("button");
+        remove.textContent = "Delete Workout";
+        remove.addEventListener("click", ()=>{this.showDeleteModal(workout)});
+        container.appendChild(remove);
+
         const back = document.createElement("button");
         back.classList.add("button");
         back.textContent = "Back";
@@ -109,5 +115,27 @@ export default {
 
     cancel: function(){
         document.getElementById("resumeWorkoutContainer").style.display = "none";
+    },
+
+    showDeleteModal: function(workout){
+        const modal = document.getElementById("deleteWorkoutModal");
+        const buttons = modal.querySelectorAll("button");
+        for(let i = 0; i < buttons.length; i++){
+            buttons[i].parentElement.removeChild(buttons[i]);
+        }
+
+        const cancel = document.createElement("button");
+        cancel.classList.add("button");
+        cancel.textContent = "Cancel";
+        cancel.addEventListener("click", ()=>{modal.style.display = "none"});
+        modal.appendChild(cancel);
+
+        const confirm = document.createElement("button");
+        confirm.classList.add("dangerButton");
+        confirm.textContent = "Delete Workout";
+        confirm.addEventListener("click", ()=>{this.delete(workout)});
+        modal.appendChild(confirm);
+
+        modal.style.display = "flex";
     }
 }
