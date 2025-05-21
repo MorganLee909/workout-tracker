@@ -25,6 +25,12 @@ export default {
         });
         container.appendChild(start);
 
+        const history = document.createElement("button");
+        history.classList.add("button");
+        history.textContent = "Workout History";
+        history.addEventListener("click", ()=>{changePage("sessionHistory", workout)});
+        container.appendChild(history);
+
         const edit = document.createElement("button");
         edit.classList.add("button");
         edit.textContent = "Edit Workout";
