@@ -80,10 +80,10 @@ const confirmOwnership = (workout, user)=>{
  @param {String} exerciseId - ID of the exercise to retrieve
  @return {Object} - Exercise object
  */
-const findExercise = (workout, exerciseId)=>{
-    for(let i = 0; i < workout.exercises.length; i++){
-        if(workout.exercises[i]._id.toString() === exerciseId){
-            return workout.exercises[i];
+const findExercise = (exercises, exerciseId)=>{
+    for(let i = 0; i < exercises.length; i++){
+        if(exercises[i]._id.toString() === exerciseId){
+            return exercises[i];
         }
     }
     return null;
