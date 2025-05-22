@@ -187,6 +187,8 @@ export default {
         switch(exercise.type){
             case "weights": this.displayWeightSets(exercise.sets, setsContainer);
         }
+
+        window.scrollTo(0, 0);
     },
 
     displayWeightSets: function(sets, container){
@@ -239,7 +241,7 @@ export default {
 
         for(let i = 0; i < this.pastSessions.length; i++){
             for(let j = 0; j < this.pastSessions[i].exercises.length; j++){
-                if(this.pastSessions[i].exercises[j].exerciseId === id){
+                if(this.pastSessions[i].exercises[j]?.exerciseId === id){
                     note.textContent = "*Data autofilled from previous workout";
                     return this.pastSessions[i].exercises[j].sets;
                 }
