@@ -6,6 +6,7 @@
 @import "./css/session.css";
 @import "./css/editWorkout.css";
 @import "./css/sessionHistory.css";
+@import "./css/sessionData.css";
 
 :root{
     --primary: #d7263d;
@@ -130,4 +131,18 @@ body{
 
 .dangerText{
     color: var(--primary);
+}
+
+.closeButton{
+    background: linear-gradient(to right, var(--accent), var(--primary));
+    border: none;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 22px;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+    color: var(--dark);
 }

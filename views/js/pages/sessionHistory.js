@@ -1,14 +1,18 @@
 export default {
     rendered: false,
+    workout: null,
 
     render: function(workout){
+        if(workout){
+            this.workout = workout;
+            this.populateSessions(workout);
+            document.getElementById("sessionHistoryTitle").textContent = workout.name;
+        }
+
         if(!this.rendered){
             this.buttons(workout);
             this.rendered = true;
         }
-
-        document.getElementById("sessionHistoryTitle").textContent = workout.name;
-        this.populateSessions(workout);
     },
 
     buttons: function(workout){
@@ -57,7 +61,12 @@ export default {
         const button = document.createElement("button");
         button.classList.add("button");
         button.textContent = this.dateFormat(new Date(session.start));
-        button.addEventListener("click", ()=>{console.log(`Button pressed for ${session.id}`)});
+        button.addEventListener("click", ()=>{
+            changePage("sessionData", {
+                session: session,
+                workout: this.workout
+            });
+        });
         return button;
     },
 
