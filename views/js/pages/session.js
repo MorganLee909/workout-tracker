@@ -44,7 +44,10 @@ export default {
         if(!this.rendered){
             nextSessionBtn.addEventListener("click", ()=>{
                 this.currentSession.exercises[this.exerciseIndex].done = true;
-                this.changeExercise(this.exerciseIndex + 1);
+                for(let i = this.exerciseIndex + 1; i < this.currentSession.exercises.length; i++){
+                    if(this.currentSession.exercises[i]?.done) continue;
+                    this.changeExercise(i);
+                }
             });
             document.getElementById("finishSessionBtn").addEventListener("click", ()=>{this.finish()});
             document.getElementById("sessionAddSet").addEventListener("click", ()=>{this.addSet()});
