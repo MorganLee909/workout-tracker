@@ -153,6 +153,7 @@ export default {
 
     changeExercise: function(num){
         this.exerciseIndex = num;
+        this.currentSession.exerciseIndex = this.exerciseIndex;
         localStorage.setItem(this.workout.id, JSON.stringify(this.currentSession));
         const nextBtn = document.getElementById("nextSessionBtn");
         if(this.exerciseIndex === this.workout.exercises.length-1){
@@ -203,15 +204,22 @@ export default {
         const deleteBtn = setElem.querySelector(".weightSetDelete");
         deleteBtn.addEventListener("click", (event)=>{
             this.deleteSet(num, event.target.parentElement);
+            localStorage.setItem(this.currentSession.workout, JSON.stringify(this.currentSession));
         });
 
         const weightInput = setElem.querySelector(".weightSetWeight");
         if(set.weight > 0) weightInput.value = set.weight;
-        weightInput.addEventListener("input", ()=>{set.weight = weightInput.value});
+        weightInput.addEventListener("input", ()=>{
+            set.weight = weightInput.value
+            localStorage.setItem(this.currentSession.workout, JSON.stringify(this.currentSession));
+        });
 
         const repInput = setElem.querySelector(".weightSetReps");
         if(set.reps !== 0) repInput.value = set.reps;
-        repInput.addEventListener("input", ()=>{set.reps = repInput.value});
+        repInput.addEventListener("input", ()=>{
+            set.reps = repInput.value
+            localStorage.setItem(this.currentSession.workout, JSON.stringify(this.currentSession));
+        });
 
         return setElem;
     },
