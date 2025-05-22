@@ -208,7 +208,7 @@ export default {
         });
 
         const weightInput = setElem.querySelector(".weightSetWeight");
-        if(set.weight > 0) weightInput.value = set.weight;
+        if(set.weight !== 0) weightInput.value = set.weight;
         weightInput.addEventListener("input", ()=>{
             set.weight = weightInput.value
             localStorage.setItem(this.currentSession.workout, JSON.stringify(this.currentSession));
