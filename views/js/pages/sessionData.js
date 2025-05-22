@@ -11,7 +11,7 @@ export default {
         
         document.querySelector("#sessionDataPage h1").textContent = workout.name;
         document.getElementById("sessionDataStart").textContent = `Start: ${this.formatDateTime(start)}`;
-        document.getElementById("sessionDataEnd").textContent = `End: ${this.formatDateTime(start)}`;
+        document.getElementById("sessionDataEnd").textContent = `End: ${this.formatDateTime(end)}`;
         document.getElementById("sessionDataLength").textContent = `${this.timeDifference(start, end)}`;
         this.displayExercises(session.exercises);
     },
