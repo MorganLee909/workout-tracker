@@ -242,8 +242,10 @@ export default {
         for(let i = 0; i < this.pastSessions.length; i++){
             for(let j = 0; j < this.pastSessions[i].exercises.length; j++){
                 if(this.pastSessions[i].exercises[j]?.exerciseId === id){
-                    note.textContent = "*Data autofilled from previous workout";
-                    return this.pastSessions[i].exercises[j].sets;
+                    const exercise = this.pastSessions[i].exercises[j];
+                    const date = new Date(this.pastSessions[i].start);
+                    note.textContent = `*Data autofilled from ${this.getDate(date)}`;
+                    return exercise.sets;
                 }
             }
         }
@@ -278,5 +280,13 @@ export default {
             .catch((err)=>{
                 notify("error", "ERROR: unable to save workout to database");
             });
+    },
+
+    getDate: function(date){
+        return date.toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+        });
     }
 }
