@@ -124,6 +124,13 @@ export default {
                 });
         }
 
+        const noteIcon = document.getElementById("sessionNotesIcon");
+        console.log(newNote);
+        if(newNote === ""){
+            noteIcon.style.display = "none";
+        }else{
+            noteIcon.style.display = "flex";
+        }
         document.getElementById("sessionNotesText").style.display = "none";
     },
 
@@ -190,6 +197,13 @@ export default {
 
         switch(exercise.type){
             case "weights": this.displayWeightSets(exercise.sets, setsContainer);
+        }
+
+        const noteIcon = document.getElementById("sessionNotesIcon");
+        if(this.workout.exercises[this.exerciseIndex].notes !== ""){
+            noteIcon.style.display = "flex";
+        }else{
+            noteIcon.style.display = "none";
         }
 
         window.scrollTo(0, 0);
