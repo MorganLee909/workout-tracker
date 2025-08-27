@@ -39,8 +39,4 @@ sessionRoutes(app);
 
 app.use(catchError);
 
-if(process.env.NODE_ENV !== "production"){
-    app.listen(8000);
-}
-export default app;
-
+app.listen(process.env.PORT);
